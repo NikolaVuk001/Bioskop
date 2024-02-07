@@ -1,0 +1,13 @@
+.navbar-nav {
+  align-items: center;
+  width: 100%;
+  background-color: #eee;
+}
+
+.right {
+  justify-content: flex-start;
+}
+
+.left {
+  justify-content: flex-end;
+}

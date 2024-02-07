@@ -1,0 +1,724 @@
+body{
+  overflow-x: hidden;
+  font-family: 'Oxygen', sans-serif;
+  background: rgb(0,212,255);
+  background: linear-gradient(109.6deg, rgb(9, 9, 116) 11.2%, rgb(103, 1, 117) 53.7%, rgb(0, 212, 255) 100.2%);  
+  color: white!important;
+  
+
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*================ NAVBAR ===================*/
+.main-navbar{
+  background-color: black;
+  box-shadow: 0 .5rem .5rem rgba(0,0,0,.2);
+  font-size: 1.3rem;
+  z-index: 1;
+}
+.main-navbar .nav-brand img{
+  height: 3.2rem;
+  /* padding-right: 1rem; */
+}
+
+.main-navbar .navbar-nav{
+  align-items: center;
+}
+
+.main-navbar .nav-item{
+  padding: 0.3rem;
+}
+
+.nav-link{
+  color: white!important;
+}
+.nav-item a:hover{
+  color: aqua!important;
+  transition: 1s;
+  text-decoration: underline aqua;
+  text-underline-offset: 22px;
+}
+
+.vr{
+  color: white;
+}
+
+.ulaznice
+{
+    margin: 0px 10px 0px 10px ;
+}
+.navbar-toggler {
+  filter: invert(100%) sepia(85%) saturate(0%) hue-rotate(238deg) brightness(103%) contrast(101%);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*================ CAROUSEL ===================*/
+
+#carousel {
+  box-shadow: 0 .5rem .5rem rgba(0,0,0,.2);
+  /* margin-top: 0.5rem; */
+}
+
+.carousel-item img{
+  
+  border:10px ridge rgba(51, 255, 255, 0.1);
+  opacity: 0.9;
+}
+
+
+.carousel-item-next
+.carousel-item-prev
+.carousel-item-active{
+    transition: trasform 1.2s ease;
+}
+
+
+/* ================ CAROUSEL CAPTION =================== */
+
+
+.carousel-caption h1{
+  color: white;
+  font-family: 'Anton', sans-serif;
+  font-size: 3.4rem;
+  text-align: start;
+}
+
+.carousel-caption p{
+  color: white!important;
+  font-family: 'Anton', sans-serif;
+  font-size: 1.4rem;
+  text-align: start;
+
+}
+
+.carousel-caption{
+  position: absolute;
+  /* top: 54%;  Nest Bitno Pravi Problem*/
+  bottom: -100%!important;
+  transition: all 0.7s;
+  max-height: 100%;
+}
+
+.carousel-caption .btn{
+  font-size: 1rem;
+  font-family: 'Anton', sans-serif;
+  text-transform: uppercase!important;
+  letter-spacing: 0.05vw;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+  
+}
+
+/* ================ CAROUSEL Button AND ANIMATION =================== */
+
+.carousel-caption .btn:hover, .btn:focus{
+  background-color: #b02424;
+  transform: translateY(-7px);
+
+}
+
+.carousel-item:hover .carousel-caption{
+  bottom: 0%!important;
+}
+
+.carousel-item:hover img{
+  filter: blur(10px);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ================ AKTUELNI FILMOVI =================== */
+
+.AktFilmovi {
+  border-bottom: solid gray;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 1.5rem;
+}
+
+
+.AktFilmovi h1{
+  color: white;
+  font-size: 3vw;
+  font-weight: bolder;
+  letter-spacing: 0.06vw;
+  text-align: start;
+}
+
+
+.card_wrapper{
+  /* background-color: ; */
+  /* display: flex;  ????*/
+  align-items: center;
+}
+
+.head_para{
+  margin-top: 15px;
+}
+
+.card_box{
+  background: transparent;
+  border-radius: 40px;
+  margin-top: 40px;
+}
+
+.card_box img{
+  width: 100%;
+  height: 17vw;
+  opacity: 0.5;
+  transition: 0.5s;
+}
+.card_box img:focus,img:hover{
+  opacity: 1;
+}
+
+.card_box:hover h4{
+  color: #b02424!important;
+}
+
+.card_text{
+  padding: 15px 20px 25px 5px;
+
+}
+
+.card_text h4{
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bolder;
+  letter-spacing: 0.06vw;
+  text-align: center;
+  animation: 0.3s;
+}
+
+.card_text p{
+  font-size: 14px;
+  color: rgb(199, 188, 188);
+}
+
+.card_text .btn{
+  font-size: 1rem;
+  font-family: 'Anton', sans-serif;
+  text-transform: uppercase!important;
+  letter-spacing: 0.05vw;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none; 
+}
+
+.fa-arrow-alt-circle-left{
+  position: absolute;
+  left: -3.5vw;
+  top: 50vw;
+}
+.fa-arrow-alt-circle-right{
+  position: absolute;
+  right: -3.5vw;
+  top: 50vw;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ================ FILM STRANA =================== */
+
+
+
+
+/* ================ EMBEDED VIDEO =================== */
+
+.embed-responsive {
+  width: 100%;
+}
+
+.modal-content{
+  background-color: black!important;
+}
+
+/* .trejlerBtn button{
+  width: 100%;
+  height: 50vh;
+} */
+
+.trejlerBtn{
+  /* display: inline-block; */
+  position: relative;
+}
+.trejlerBtn img{
+  max-width: 100%;
+  height: 50vh;
+  width: 100vw;
+}
+.trejlerBtn .playICO{
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  width: 96px;
+  height: 96px;
+  max-width: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ================ Repertoar =================== */
+
+/* ================ Filter NavBar =================== */
+
+
+.filter-navbar{
+  
+  border-bottom: 1px solid rgb(87, 87, 87);
+  border-top: 1px solid rgb(87, 87, 87);
+}
+
+
+
+
+.filter-navbar ul{
+  padding-top: 0.5vh;
+  
+}
+
+.filter-navbar li{
+  font-size: 1.5rem;
+  display: inline;
+  padding: 1.5rem;
+}
+.filter-navbar label{
+  display: inline-block;
+  padding-right: 0.5rem;
+}
+.filter-navbar select{
+  
+  background-color: transparent;
+  display: inline-block;
+  
+  /* border: 5px solid black ; */
+  color: white;
+  border-style: none;
+  background: transparent;
+}
+select option{
+  color: black;
+  background: transparent!important;
+  background-color: transparent!important;
+  text-align: center;
+}
+
+.filter-navbar .vr{
+  height: 1.5vh!important;
+  margin-left: 1vw;
+}
+select::-ms-expand {
+  display: none;
+}
+
+.filter-select{
+    -webkit-appearance: none;
+    -moz-appearance: none;  
+}
+
+
+.filter-navbar li:after{
+  content: url("../assets/icons/circle-chevron-down-solid.svg");
+  padding-left: 0.2rem;
+  padding-top: 0.1rem;
+  filter: invert(100%) sepia(85%) saturate(0%) hue-rotate(238deg) brightness(103%) contrast(101%);
+  position: absolute;
+  color: white;
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ================ SCALING FOR PHONE AND OTHER DEVICES =================== */
+
+@media (max-width: 1199.98px){
+
+}
+
+@media (max-width: 767.98px){
+
+}
+
+@media screen and (max-width: 600px) {
+  .hidden-mobile {
+    visibility: hidden;
+    clear: both;
+    float: left;
+    margin: 10px auto 5px 20px;
+    width: 28%;
+    display: none;
+
+}
+
+.carousel-item img{
+  
+  border:none;
+  opacity: 1.1;
+  height: 100vw;
+}
+
+#NedeljaSlika{
+  content: url("../assets/slider/NedeljaPoster.jpg");
+}
+
+#FerrariSlika{
+  content: url("../assets/slider/FerrariPoster.jpg");
+}
+
+#PcelarSlika{
+  content: url("../assets/slider/PcelarPoster.jpg");
+}
+
+
+
+
+.carousel-item:hover img{
+  filter: none;
+}
+
+.AktFilmovi{
+  margin-left: 1%;
+  margin-right: 1%;
+  margin-top: 1.5rem;
+}
+.AktFilmovi h1{
+  color: white;
+  font-size: 10vw;
+  font-weight: bolder;
+  letter-spacing: 0.06vw;
+  text-align: start;
+}
+
+
+.card_box img{
+  height: 100vw;
+  opacity: 1;
+}
+
+
+
+
+.filter-navbar ul{
+  justify-content: start;
+}
+
+.filter-navbar li{
+  font-size: 1.39rem;
+}
+
+.filter-navbar .container{
+  justify-content: left;
+}
+
+.filter-navbar label{
+  display: block;
+  padding: 0.5rem;
+}
+
+
+
+}
+
+
+@supports (-webkit-touch-callout: none) {
+  .filter-navbar li:after{
+    content: url("../assets/icons/chevron-down-solid.svg");
+  }
+}
+
+@supports not (-webkit-touch-callout: none) {
+  .filter-navbar li:after{
+    content: auto;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*-- Bootstrap Mobile Gutter Fix --*/
+.row, .container-fluid {
+  margin-left: 0px !important;
+  margin-right: 0px !important;
+}
+
+/*-- Fixed Background Image --*/
+.fixed-background {
+  position: relative;
+  width: 100%;
+  z-index: 1000!important;
+}
+.fixed-wrap {
+  clip: rect(0, auto, auto, 0);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -999 !important;
+}
+.fixed {
+  z-index: -999!important;
+  display: block;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center center;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  will-change: transform;
+}
+
