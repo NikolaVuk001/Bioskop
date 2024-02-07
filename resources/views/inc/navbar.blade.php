@@ -8,6 +8,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav mx-auto">
+                
                 <!-- Logo -->
                 <a href="/" id="Logo" class="nav-brand">
                     <img src="assets/icons/cinema-svgrepo-com.svg" alt="Cinema Logo" height="50px">
@@ -31,7 +32,7 @@
                 <div class="vr hidden-xs hidden-mobile"></div>
 
                 <li class="nav-item" style="margin-right: 12px;">
-                    <a class="nav-link" href="{{url('/Repertoar')}}">
+                    <a class="nav-link" href="{{url('/Repertoar')}}" style="display:flex;" >
                         <img src="assets/icons/ticket-perforated.svg" class="ulaznice" width="30" height="30"
                             alt="Tickets"
                             style="filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(288deg) brightness(102%) contrast(102%);">
@@ -53,6 +54,32 @@
                         Register
                     </a>
                 </li>
+<li>
+    <div class="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">
+        <div class="px-4">
+            <div class="font-medium text-base text-gray-800 dark:text-gray-200"></div>
+            <div class="font-medium text-sm text-gray-500"></div>
+        </div>
+
+        <div class="mt-3 space-y-1">
+            <x-responsive-nav-link :href="route('profile.edit')">
+                {{ __('Profile') }}
+            </x-responsive-nav-link>
+
+            <!-- Authentication -->
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+
+                <x-responsive-nav-link :href="route('logout')"
+                        onclick="event.preventDefault();
+                                    this.closest('form').submit();">
+                    {{ __('Log Out') }}
+                </x-responsive-nav-link>
+            </form>
+        </div>
+    </div>
+</li>
+               
 
                 
             </ul>

@@ -58,7 +58,4 @@
 
 
 <!-- card area end -->
-<script src="js\owl.carousel.min.js"></script>
-<script src="js\owl.carousel.js"></script>
-<script src="js\jquery-3.5.1.min.js"></script>
 
