@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<div>
     <nav class="navbar nav-expand-lg filter-navbar">
 
         <div class="container justify-content-center">
@@ -46,6 +47,7 @@
 
         </div>
     </nav>
+</div>
 
     
 @endsection

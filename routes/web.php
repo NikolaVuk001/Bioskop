@@ -3,6 +3,7 @@
 use App\Http\Controllers\movieController;
 use App\Http\Controllers\repertoarController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Home\HomeSliderController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -46,8 +47,18 @@ Route::controller(AdminController::class)->group(function () {
     Route::get('/edit/profile', 'EditProfile')->name('edit.profile');
     Route::post('/store/profile', 'StoreProfile')->name('store.profile');
     Route::get('/edit/profile/changePassword', 'ChangePassword')->name('change.password');
-    Route::post('/edit/profile/updatePassowrd', 'UpdatePassword')->name('update.password');
+    Route::post('/edit/profile/updatePassowrd', 'UpdatePassword')->name('update.password');Route::get('/edit/profile/changePassword', 'ChangePassword')->name('change.password');
+
      
+});
+
+Route::controller(HomeSliderController::class)->group(function () {
+    Route::get('/home/slide', 'HomeSlider')->name('home.slide1');
+    Route::get('/home/slide2', 'HomeSlider2')->name('home.slide2');
+    Route::get('/home/slide3', 'HomeSlider3')->name('home.slide3');
+    Route::post('/update/slide', 'UpdateSlide')->name('update.slide');
+
+ 
 });
 
 require __DIR__.'/auth.php';

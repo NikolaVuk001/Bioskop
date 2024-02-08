@@ -18,21 +18,18 @@
                   </a>
               </li>
 
-              <li>
-                  <a href="calendar.html" class=" waves-effect">
-                      <i class="ri-calendar-2-line"></i>
-                      <span>Calendar</span>
-                  </a>
-              </li>
+              
   
               <li>
                   <a href="javascript: void(0);" class="has-arrow waves-effect">
                       <i class="ri-mail-send-line"></i>
-                      <span>Email</span>
+                      <span>Pocetna Slider Podesavanja</span>
                   </a>
                   <ul class="sub-menu" aria-expanded="false">
-                      <li><a href="email-inbox.html">Inbox</a></li>
-                      <li><a href="email-read.html">Read Email</a></li>
+                      <li><a href="{{route('home.slide1')}}">Pocetna Slide 1</a></li>
+                      <li><a href="{{route('home.slide2')}}">Pocetna Slide 2</a></li>
+                      <li><a href="{{route('home.slide3')}}">Pocetna Slide 3</a></li>
+                      
                   </ul>
               </li>
 
