@@ -4,6 +4,8 @@ use App\Http\Controllers\movieController;
 use App\Http\Controllers\repertoarController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Home\HomeSliderController;
+use App\Http\Controllers\FilmController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -53,10 +55,18 @@ Route::controller(AdminController::class)->group(function () {
 });
 
 Route::controller(HomeSliderController::class)->group(function () {
-    Route::get('/home/slide', 'HomeSlider')->name('home.slide1');
-    Route::get('/home/slide2', 'HomeSlider2')->name('home.slide2');
-    Route::get('/home/slide3', 'HomeSlider3')->name('home.slide3');
+    Route::get('/home/slide', 'HomeSlider')->name('home.slide');
     Route::post('/update/slide', 'UpdateSlide')->name('update.slide');
+
+ 
+});
+
+
+Route::controller(FilmController::class)->group(function () {
+    Route::get('/all/Film', 'AllFilms')->name('all.film');
+    Route::get('/add/Film', 'AddFilms')->name('add.film');
+    Route::post('/store/Film', 'StoreFilm')->name('store.film');
+    
 
  
 });

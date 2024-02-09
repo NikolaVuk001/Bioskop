@@ -1,9 +1,9 @@
 {{-- Carousel --}}
 
 @php
-    $homeslide1 = App\Models\HomeSlide::find(1);
-    $homeslide2 = App\Models\HomeSlide::find(2);
-    $homeslide3 = App\Models\HomeSlide::find(3);
+    $filmSlide1 = App\Models\Film::where("id", App\Models\HomeSlide::find(1)->film_id)->first();
+    $filmSlide2 = App\Models\Film::where("id", App\Models\HomeSlide::find(2)->film_id)->first();
+    $filmSlide3 = App\Models\Film::where("id", App\Models\HomeSlide::find(3)->film_id)->first();
 @endphp
 
 
@@ -14,14 +14,14 @@
 
       <div class="carousel-item active">
           <!-- Dzej Slika -->
-          <a href="{{url('/Film')}}"><img src="{{$homeslide1->home_slide_img}}" id="NedeljaSlika" alt="Slika Filma" class="w-100 img-responsive"></a>          
+          <a href="{{url('/Film')}}"><img src="{{$filmSlide1->slide_poster}}" id="NedeljaSlika" alt="Slika Filma" class="w-100 img-responsive"></a>          
           <!-- slika caption -->
           <div class="carousel-caption">
               <div class="container">
                   <div class="row justify-content-start text-left">
                       <div class="col-12 d-md-block d-sm-none hidden-mobile py-3 mx-0">
-                          <h1 class="pb-3">{{$homeslide1->nazivFilma}}</h1>
-                          <p>{{$homeslide1->opis}}</p>
+                          <h1 class="pb-3">{{$filmSlide1->naziv_filma}}</h1>
+                          <p>{{$filmSlide1->opis_kratak}}</p>
                           <p>
                               <a href="#" class="btn btn-danger btn-lg">Kupi Karte</a>
                           </p>
@@ -34,14 +34,14 @@
 
       <div class="carousel-item ">
           <!-- Ferrari Slika -->
-          <a href="#"><img src="{{$homeslide2->home_slide_img}}" id="FerrariSlika" alt="Slika Filma" class="w-100 img-responsive"></a>          
+          <a href="#"><img src="{{$filmSlide2->slide_poster}}" id="FerrariSlika" alt="Slika Filma" class="w-100 img-responsive"></a>          
           <!-- slika caption -->
           <div class="carousel-caption">
               <div class="container">
                   <div class="row justify-content-start text-left">
                       <div class="col-12 d-md-block d-sm-none hidden-mobile py-3 mx-0">
-                          <h1 class="pb-3">{{$homeslide2->nazivFilma}}</h1>
-                          <p>{{$homeslide2->opis}}</p>
+                          <h1 class="pb-3">{{$filmSlide2->naziv_filma}}</h1>
+                          <p>{{$filmSlide2->opis_kratak}}</p>
                           <p>
                               <a href="#" class="btn btn-danger btn-lg">Kupi Karte</a>
                           </p>
@@ -53,14 +53,14 @@
 
       <div class="carousel-item ">
           <!-- Pcelar Slika -->
-          <a href="#"><img src="{{$homeslide3->home_slide_img}}" id="PcelarSlika" alt="Slika Filma" class="w-100 img-responsive"></a>                    
+          <a href="#"><img src="{{$filmSlide3->slide_poster}}" id="PcelarSlika" alt="Slika Filma" class="w-100 img-responsive"></a>                    
           <!-- slika caption -->
           <div class="carousel-caption">
               <div class="container">
                   <div class="row justify-content-start text-left">
                       <div class="col-12 d-md-block d-sm-none hidden-mobile py-3 mx-0">
-                          <h1 class="pb-3">{{$homeslide3->nazivFilma}}</h1>
-                          <p>{{$homeslide3->opis}}</p>
+                          <h1 class="pb-3">{{$filmSlide3->naziv_filma}}</h1>
+                          <p>{{$filmSlide3->opis_kratak}}</p>
                           <p>
                               <a href="#" class="btn btn-danger btn-lg">Kupi Karte</a>
                           </p>

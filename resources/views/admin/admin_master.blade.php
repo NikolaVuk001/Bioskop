@@ -27,6 +27,9 @@
         <link href="{{ asset('backend/assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
         <!-- App Css-->
         <link href="{{ asset('backend/assets/css/app.min.css') }}" id="app-style" rel="stylesheet" type="text/css" />
+        
+        
+        
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
 
     </head>
@@ -98,6 +101,14 @@
 
         <!-- App js -->
         <script src="{{ asset('backend/assets/js/app.js') }}"></script>
+
+        {{-- TagsInput JS --}}
+        <script src="{{ asset('backend/assets/js/tagsinput.js') }}"></script>
+
+        {{-- Validation Script --}}
+        <script src="{{ asset('backend/assets/js/validate.min.js') }}"></script>
+
+        
 
         {{-- Toester Skripta Za Notifikacije--}}
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>

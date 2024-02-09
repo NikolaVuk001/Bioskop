@@ -11,12 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('home_slides', function (Blueprint $table) {
+        Schema::create('multi__slikes', function (Blueprint $table) {
             $table->id();
-            $table->string('nazivFilma');
-            $table->string('opis');
-            $table->integer('film_id ')->unique;
-            $table->string('home_slide_img');
+            $table->integer('film_id');
+            $table->integer('naziv_slike');
             $table->timestamps();
         });
     }
@@ -26,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('home_slides');
+        Schema::dropIfExists('multi__slikes');
     }
 };
