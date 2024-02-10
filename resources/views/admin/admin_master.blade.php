@@ -108,6 +108,9 @@
         {{-- Validation Script --}}
         <script src="{{ asset('backend/assets/js/validate.min.js') }}"></script>
 
+        {{-- Fontawsome css --}}
+        <link rel="stylesheet" href="{{asset('frontend/assets/css/fontawesome-all.min.css')}}">
+
         
 
         {{-- Toester Skripta Za Notifikacije--}}

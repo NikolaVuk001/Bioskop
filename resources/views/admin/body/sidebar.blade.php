@@ -26,12 +26,19 @@
                       <span>Pocetna Slider Podesavanja</span>
                   </a>
                   <ul class="sub-menu" aria-expanded="false">
-                      <li><a href="{{route('home.slide')}}">Pocetna Slide 1</a></li>
-                      {{-- <li><a href="{{route('home.slide2')}}">Pocetna Slide 2</a></li>
-                      <li><a href="{{route('home.slide3')}}">Pocetna Slide 3</a></li> --}}
-                      
+                      <li><a href="{{route('home.slide')}}">Pocetna Slider</a></li>
                   </ul>
               </li>
+
+              <li>
+                <a href="javascript: void(0);" class="has-arrow waves-effect">
+                    <i class="ri-mail-send-line"></i>
+                    <span>Pocetna Kartice Filmova</span>
+                </a>
+                <ul class="sub-menu" aria-expanded="false">
+                    <li><a href="{{route('home.cards')}}">Kartice Filmova</a></li>
+                </ul>
+            </li>
 
               <li>
                 <a href="javascript: void(0);" class="has-arrow waves-effect">
@@ -41,6 +48,61 @@
                 <ul class="sub-menu" aria-expanded="false">
                     <li><a href="{{route('all.film')}}">Svi Filmovi</a></li>
                     <li><a href="{{route('add.film')}}">Dodaj Film</a></li>
+                    
+                    
+                </ul>
+            </li>
+
+
+            <li>
+                <a href="javascript: void(0);" class="has-arrow waves-effect">
+                    <i class="ri-layout-3-line"></i>
+                    <span>Projekcije</span>
+                </a>
+                <ul class="sub-menu" aria-expanded="false">
+                    <li>
+                        <a href="javascript: void(0);" class="has-arrow">Pregled Projekcija</a>
+                        <ul class="sub-menu" aria-expanded="false">
+                            <li><a href="{{route('all.trenutne.projekcija')}}">Trenutne Projekcije</a></li>
+                            <li><a href="{{route('all.projekcija')}}">Sve Projekcije</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="{{route('add.projekcija')}}">Dodaj Projekciju</a></li>
+                </ul>
+            </li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <li>
+                <a href="javascript: void(0);" class="has-arrow waves-effect">
+                    <i class="ri-mail-send-line"></i>
+                    <span>Projekcije</span>
+                </a>
+
+
+
+                <ul class="sub-menu" aria-expanded="false">
+                    <a href="javascript: void(0);" class="has-arrow">Pregled Projekcija</a>
+                            <ul class="sub-menu" aria-expanded="false">
+                              <li><a href="layouts-dark-sidebar.html">Trenutne Projekcije</a></li>
+                              <li><a href="">Sve Projekcije</a></li>
+                            </ul>
+                    <li><a href="{{route('add.projekcija')}}">Dodaj Projekciju</a></li>
                     
                     
                 </ul>

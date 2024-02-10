@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('poster')->nullable();
             $table->string('slide_poster')->nullable();            
             $table->string('pocetak_prikazivanja')->nullable();
+            $table->date('pocetak_prikazivanja_date')->nullable();
             $table->text('glumci')->nullable();
             $table->string('reziser')->nullable();
             $table->string('distributer')->nullable();

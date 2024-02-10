@@ -1,3 +1,6 @@
+
+
+
 body{
   overflow-x: hidden;
   font-family: 'Oxygen', sans-serif;
@@ -106,7 +109,7 @@ body{
 .nav-link{
   color: white!important;  
 }
-.nav-item a:hover{
+.nav_item a:hover{
   color: aqua!important;
   transition: 1s;
   text-decoration: underline aqua;
@@ -174,7 +177,7 @@ body{
 
 .carousel-item img{
   
-  border:10px ridge rgba(51, 255, 255, 0.1);
+  /* border:10px ridge rgba(51, 255, 255, 0.1); */
   opacity: 0.9;
 }
 
@@ -200,7 +203,7 @@ body{
 .carousel-caption p{
   color: white!important;
   font-family: 'Anton', sans-serif;
-  font-size: 2.9rem;
+  font-size: 2.3rem;
   text-align: start;
 
 }
@@ -239,9 +242,93 @@ body{
   bottom: 0%!important;
 }
 
-.carousel-item:hover img{
+.slider-item:hover img{
   filter: blur(10px);
 }
+
+
+
+
+
+
+
+
+
+/* ================ Detalji Filma Strana =================== */
+
+
+.DetaljiFilma {
+  font-family: 'Anton', sans-serif;
+  
+}
+
+
+
+
+
+
+
+/* ================ All Films Strana =================== */
+
+
+
+.card{
+  border: none!important;
+  background-color: transparent!important;
+  
+  
+}
+.card .card-title{
+  font-family: 'Anton', sans-serif;
+  font-size: 3.2vh;
+  color: white;
+}
+
+.card p{
+  font-size: 1.4vh;
+}
+.card .btn{
+  font-size: 1rem;
+  font-family: 'Anton', sans-serif;
+  text-transform: uppercase!important;
+  letter-spacing: 0.05vw;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none; 
+}
+
+.card img{
+  transition: 0.5s;
+  width: 12vw; height: 30vh;
+}
+
+.card img:hover{
+  transform: scale(1.03);
+}
+
+.card-body {
+  border: none;
+}
+.nav-tabs > .nav-item{
+  color: transparent!important;
+}
+
+.opcije_film .nav-link{
+  color: white!important;
+  background-color: transparent!important;
+  font-family: 'Anton', sans-serif;
+}
+
+.opcije_film .active{
+  color: white!important;
+  background-color: transparent!important;
+  font-family: 'Anton', sans-serif;
+}
+
+
 
 
 
@@ -610,14 +697,20 @@ select::-ms-expand {
 /* ================ SCALING FOR PHONE AND OTHER DEVICES =================== */
 
 @media (max-width: 1199.98px){
+  
 
 }
+
+
+
+
 
 @media (max-width: 767.98px){
+  
 
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-device-width: 600px) and (-webkit-min-device-pixel-ratio:0) {
   .hidden-mobile {
     visibility: hidden;
     clear: both;
@@ -628,11 +721,25 @@ select::-ms-expand {
 
 }
 
+.card img{
+  width: 100vw!important; height: 50vh!important;
+}
+
 .carousel-item img{
   
   border:none;
   opacity: 1.1;
-  height: 100vw;
+}
+
+.trejlerBtn img{
+  height: 30vh!important;
+}
+
+.galerija img{
+  
+  border:none;
+  opacity: 1.1;
+  height: 30vh!important;
 }
 
 #NedeljaSlika{

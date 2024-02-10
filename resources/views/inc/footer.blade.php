@@ -1,4 +1,4 @@
-<footer class="footer footer-fixed-bottom">
+<footer class="footer mt-auto">
   <div class="container">
       <div class="row justify-content-between">
           <div class="col-md-4">

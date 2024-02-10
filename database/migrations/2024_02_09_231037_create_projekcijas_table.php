@@ -11,12 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('home_slides', function (Blueprint $table) {
+        Schema::create('projekcijas', function (Blueprint $table) {
             $table->id();
-            $table->string('nazivFilma');
-            $table->string('opis');
-            $table->integer('film_id')->unique;
-            $table->string('home_slide_img');
+            $table->string('naziv_filma');
+            $table->integer('film_id');
+            $table->dateTime('datum_i_vreme')->unique();
+            $table->string('sala_projekcije');
+            $table->double('cena_karte');
+            $table->integer('broj_slobodnih_mesta');
             $table->timestamps();
         });
     }
@@ -26,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('home_slides');
+        Schema::dropIfExists('projekcijas');
     }
 };

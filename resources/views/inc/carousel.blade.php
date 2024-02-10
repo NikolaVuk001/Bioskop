@@ -12,8 +12,8 @@
   <div class="carousel-inner">
 
 
-      <div class="carousel-item active">
-          <!-- Dzej Slika -->
+      <div class="carousel-item slider-item active">
+          <!-- Film 1 Slika -->
           <a href="{{url('/Film')}}"><img src="{{$filmSlide1->slide_poster}}" id="NedeljaSlika" alt="Slika Filma" class="w-100 img-responsive"></a>          
           <!-- slika caption -->
           <div class="carousel-caption">
@@ -32,9 +32,9 @@
       </div>
 
 
-      <div class="carousel-item ">
-          <!-- Ferrari Slika -->
-          <a href="#"><img src="{{$filmSlide2->slide_poster}}" id="FerrariSlika" alt="Slika Filma" class="w-100 img-responsive"></a>          
+      <div class="carousel-item slider-item ">
+          <!-- Film 2 Slika -->
+          <a href="#"><img src="{{$filmSlide2->slide_poster}}"  id="FerrariSlika" alt="Slika Filma" class="w-100 img-responsive"></a>          
           <!-- slika caption -->
           <div class="carousel-caption">
               <div class="container">
@@ -51,8 +51,8 @@
           </div>
       </div>
 
-      <div class="carousel-item ">
-          <!-- Pcelar Slika -->
+      <div class="carousel-item slider-item ">
+          <!-- Film 3 Slika -->
           <a href="#"><img src="{{$filmSlide3->slide_poster}}" id="PcelarSlika" alt="Slika Filma" class="w-100 img-responsive"></a>                    
           <!-- slika caption -->
           <div class="carousel-caption">

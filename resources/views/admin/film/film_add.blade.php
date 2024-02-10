@@ -93,6 +93,11 @@
                                 </div>
 
                                 <div class="mb-3 form-group">
+                                    <label for="inputProductTitle" class="form-label">Odeberite Datum Pocetka Prikazivanja</label>
+                                    <input name="pocetak_prikazivanja_date" class="form-control" type="date" value="" id="inputProductTitle">
+                                </div>
+
+                                <div class="mb-3 form-group">
                                     <label for="inputProductTitle" class="form-label">Glumci</label>
                                     <div class="bootstrap-tagsinput">
                                         <input name="glumci" type="text" data-role="tagsinput" class="form-control">
@@ -118,15 +123,7 @@
                                     <input type="text" name="cena_karte" class="form-control" id="inputPrice"
                                         placeholder="00.00">
                                 </div>
-                                <div class="mb-3 form-check">
-                                  <label for="inputPrice" class="form-label">Trenutno U Prodaji</label>
-                                  
-                                    
-                                      <input class="form-check-input" name="trenutno_aktivan" id="trenutno_aktivan" type="checkbox" value="0" id="flexCheckDefault" unchecked="">
-                                      <label class="form-check-label" for="flexCheckDefault">Trenutno U Prodaji</label>
-                                    
-                                                                   
-                              </div>
+                                                               
                                 <div class="mb-3 d-flex align-items-end justify-content-end">                                  
                                     <input type="submit" class="btn btn-primary btn-lg px-4" value="Dodaj Film"/>                                                              
                                 </div>
