@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Karta;
 use App\Models\Projekcija;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Http\Request;
@@ -28,7 +29,7 @@ class IndexController extends Controller
     public function FilmDetails($id)
     {
         $film = Film::where("id", $id)->first();
-        $slike = Multi_Slike::where("film_id", $id)->get();
+        $slike = Multi_Slike::where("film_id", $id)->get();        
         return view('movie', compact('film', 'slike'));
 
     }
@@ -155,14 +156,15 @@ class IndexController extends Controller
     public function ProjekcijaOdabirMesta($id){
         $projekcija = DB::table('projekcijas')
             ->Join('films', 'projekcijas.film_id', '=', 'films.id')
-            ->select('*')
+            ->select('projekcijas.id as projekcija_id', 'films.poster as poster', 'films.naziv_filma as naziv_filma', 'projekcijas.datum_i_vreme as datum_i_vreme', 'projekcijas.cena_karte as cena_karte', 'projekcijas.sala_projekcije as sala', 'films.id as film_id')
             ->where('projekcijas.id', $id)
             ->first();
+        $karte = Karta::where('projekcija_id', $id)->get();
 
             
             
                 
-                return view('odabir_mesta',compact('projekcija'));
+                return view('odabir_mesta',compact('projekcija','karte'));
 
             
             

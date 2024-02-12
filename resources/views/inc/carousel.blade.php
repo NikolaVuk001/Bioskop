@@ -59,10 +59,10 @@
                     <div class="container">
                         <div class="row justify-content-start text-left">
                             <div class="col-12 d-md-block d-sm-none hidden-mobile py-3 mx-0">
-                                <h1 class="pb-3">{{url('/Repertoar/Film/' . $filmSlide3->id)}}</h1>
+                                <h1 class="pb-3">{{$filmSlide3->naziv_filma}}</h1>
                                 <p>{{$filmSlide3->opis_kratak}}</p>
                                 <p>
-                                    <a href="/Repertoar/Film/{{$filmSlide3->id}}" class="btn btn-danger btn-lg">Kupi Karte</a>
+                                    <a href="{{url('/Repertoar/Film/' . $filmSlide3->id)}}" class="btn btn-danger btn-lg">Kupi Karte</a>
                                 </p>
                             </div>
                         </div>

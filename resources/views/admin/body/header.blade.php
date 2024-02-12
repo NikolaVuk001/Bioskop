@@ -3,7 +3,7 @@
         <div class="d-flex">
             <!-- LOGO -->
             <div class="navbar-brand-box">
-                <a href="{{asset('dashboard')}}" class="logo logo-dark">
+                <a href="{{route('admin.dasboard')}}" class="logo logo-dark">
                     <span class="logo-sm">
                         <img src="{{ asset('assets/icons/cinema-svgrepo-com.svg') }}" alt="logo-sm" height="22">
                     </span>
@@ -12,7 +12,7 @@
                     </span>
                 </a>
 
-                <a href="{{asset('dashboard')}}" class="logo logo-light">
+                <a href="{{route('admin.dasboard')}}" class="logo logo-light">
                     <span class="logo-sm">
                         <img src="{{ asset('assets/icons/cinema-svgrepo-com.svg') }}" alt="logo-sm-light" height="22">
                     </span>

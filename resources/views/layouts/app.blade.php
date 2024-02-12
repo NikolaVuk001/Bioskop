@@ -39,6 +39,13 @@
         {{-- CSS Style Za Vece Button-e u Bootstrapu --}}
         <link rel="stylesheet" href="https://unpkg.com/bs-brain@2.0.3/tutorials/buttons/button-1/assets/css/button-1.css">
 
+        {{-- Stirpe Js --}}
+        <script src="https://js.stripe.com/v3/"></script>
+
+
+        {{-- Toaser Css Notifikacije --}}
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
+
         
         
 
@@ -106,6 +113,32 @@
         <script src="{{ asset('frontend/assets/js/wow.min.js') }}"></script>
         <script src="{{ asset('frontend/assets/js/plugins.js') }}"></script>
         <script src="{{ asset('frontend/assets/js/main.js') }}"></script>
+
+        {{-- Toester Skripta Za Notifikacije--}}
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+        <script>
+            @if(Session::has('message'))
+            var type = "{{ Session::get('alert-type','info') }}"
+            switch(type){
+               case 'info':
+               toastr.info(" {{ Session::get('message') }} ");
+               break;
+           
+               case 'success':
+               toastr.success(" {{ Session::get('message') }} ");
+               break;
+           
+               case 'warning':
+               toastr.warning(" {{ Session::get('message') }} ");
+               break;
+           
+               case 'error':
+               toastr.error(" {{ Session::get('message') }} ");
+               break; 
+            }
+            @endif 
+           </script>
 
          
         

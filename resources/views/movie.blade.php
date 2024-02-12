@@ -92,7 +92,7 @@
         
             <div class="carousel-item active galerija">
                 
-                    <img src="{{url($img->naziv_slike)}}"  alt="Slika Filma" class="w-100 img-responsive" style="height: 80vh">        
+                    <img src="{{asset($img->naziv_slike)}}"  alt="Slika Filma" class="w-100 img-responsive" style="height: 80vh">        
                        
                 </div>
         
@@ -100,7 +100,7 @@
         @else
             <div class="carousel-item galerija">
                 
-                    <img src="{{url($img->naziv_slike)}}"  alt="Slika Filma" class="w-100 img-responsive" style="height: 80vh">        
+                    <img src="{{asset($img->naziv_slike)}}"  alt="Slika Filma" class="w-100 img-responsive" style="height: 80vh">        
                        
                 </div>
 

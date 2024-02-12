@@ -40,7 +40,21 @@
                     </a>
                 </li>
                 <div class="vr hidden-xs hidden-mobile"></div>
+                @if (Auth::check())
+                <div class="vr hidden-xs hidden-mobile"></div>
 
+                <li class="nav-item nav_item" style="margin-right: 12px;">
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+    
+                        <a class="nav-link" href="route('logout')"
+                                onclick="event.preventDefault();
+                                            this.closest('form').submit();">
+                            Logout
+                        </a>
+                    </form>
+                </li>
+                @else
                 <li class="nav-item nav_item" style="margin-right: 12px;">
                     <a class="nav-link" href="{{ url('/login') }}">
 
@@ -54,6 +68,10 @@
                         Register
                     </a>
                 </li>
+                @endif
+
+                
+                
 
             </ul>
         </div>

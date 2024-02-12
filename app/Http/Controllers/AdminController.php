@@ -9,6 +9,14 @@ use App\Models\User;
 
 class AdminController extends Controller
 {
+
+
+    public function AdminDashboard(){
+        return view("admin.index");
+    }
+
+
+
     //Metoda Za Logout Admina
      public function destroy(Request $request)
     {

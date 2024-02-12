@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
@@ -18,5 +19,17 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
+
+        for ($i = 0 ; $i < 12; $i++) {
+            for ($j = 0; $j < 12; $j++) {
+                DB::table('sedistes')->insert([
+                    'oznaka' => $i+1 . '-' . $j+1,
+                    'sala' => '1',
+                    ]);
+                }
+            }
+
+        
     }
 }

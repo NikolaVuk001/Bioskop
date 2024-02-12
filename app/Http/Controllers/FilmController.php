@@ -196,7 +196,8 @@ class FilmController extends Controller
 
         foreach($slike as $id => $img){
             $imgDel = Multi_Slike::findOrFail($id);
-            unlink($imgDel->naziv_slike);
+            
+            // unlink($imgDel->naziv_slike);
 
             $make_name = hexdec(uniqid()) . '.' . $img->getClientOriginalExtension();
             $img->move(public_path('upload/Film/Slike'), $make_name);

@@ -4,11 +4,13 @@ const count = document.getElementById("count");
 const total = document.getElementById("total");
 const sedista = document.getElementById("sedista");
 const movieSelect = document.getElementById("cena_karte");
+const cena_karte = document.getElementById("cena_karte");
 const sedista_ids = [];
 
 populateUI();
 
-let ticketPrice = movieSelect.value;
+let ticketPrice = cena_karte.value;
+console.log(cena_karte.value);
 
 
 
@@ -25,6 +27,7 @@ updateSelectedCount = () => {
 
 
   console.log(sedista_ids);
+  sedista.innerText = sedista_ids;
 
   const seatsIndex = [...selectedSeats].map((seat) => {
     return [...seats].indexOf(seat);
@@ -36,7 +39,8 @@ updateSelectedCount = () => {
 
   count.innerText = selectedSeatsCount;
   total.innerText = selectedSeatsCount * ticketPrice;
-  sedista.innerText = sedista_ids;
+  
+  
   
   
   
@@ -69,6 +73,7 @@ movieSelect.addEventListener("change", (e) => {
   console.log(ticketPrice);
   setMovieData(e.target.selectedIndex, e.target.value);
   updateSelectedCount();
+  
 });
 
 container.addEventListener("click", (e) => {
@@ -83,3 +88,5 @@ container.addEventListener("click", (e) => {
 });
 
 updateSelectedCount();
+
+

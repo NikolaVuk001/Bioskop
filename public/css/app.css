@@ -656,7 +656,7 @@ select option{
 }
 
 
-/* ================ Filmovi =================== */
+/* ================ Projekcija =================== */
 
 #avatar {
   
@@ -728,7 +728,6 @@ button.projekcija-btn:hover{
 
 
 
-/* ================ Filmovi =================== */
 
 
 
@@ -742,8 +741,18 @@ button.projekcija-btn:hover{
 
 
 
+/* ================ Kupovina =================== */
 
 
+.order_list{
+  color: white;
+  
+}
+
+.order_list h1{
+  font-size: 3rem;
+  
+}
 
 
 

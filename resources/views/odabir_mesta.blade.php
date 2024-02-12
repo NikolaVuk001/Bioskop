@@ -4,12 +4,15 @@
 
 @php
   $datum_format = date("d-m-Y", strtotime($projekcija->datum_i_vreme));
-  $vreme_format = date("H:i", strtotime($projekcija->datum_i_vreme))
+  $vreme_format = date("H:i", strtotime($projekcija->datum_i_vreme));
+  const broj_sed = 0;
+
 @endphp
 
 
 {{-- CSS Style Za Salu --}}
 <link rel="stylesheet" href="{{asset('css/sala.css')}}">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <div class="container mt-10">
   <div class="card mb-3" style="max-width: 540px;">
@@ -20,9 +23,11 @@
       <div class="col-md-8">
         <div class="card-body">
           <h5 class="card-title">{{$projekcija->naziv_filma}}</h5>
-          <input type="text" value="730"  id="cena_karte" hidden>
-          <p class="card-text">Datum: {{$datum_format}}</p>
-          <p class="card-text">Vreme: {{$vreme_format}} </p>
+          
+          
+          <p class="card-text p-0 m-0">Datum: {{$datum_format}}</p>
+          <p class="card-text p-0 m-0">Vreme: {{$vreme_format}} </p>
+          <p class="card-text p-0 m-0">Sala {{$projekcija->sala}} </p>
           
         </div>
       </div>
@@ -48,7 +53,7 @@
     </li>
   </ul>
 
-  <div class="container containerSala">
+  {{-- <div class="container containerSala">
     <div class="screen"></div>
     <div class="container containerSala">
       <div class="row" id="red-1">        
@@ -192,11 +197,15 @@
         <div class="seat" id="10-11"></div>  
         <div class="seat" id="10-12"></div>        
       </div>
-      
-      
-    
-    
-  </div>
+  </div> --}}
+
+  {{-- <div class="to-do to-do-wrap @php echo get_field('to-do-repeater') ? ' complete' : '' @endphp"></div>
+  <option value="all" {{ 'all' == $zanr_p ? "selected" : "" }}>Sve</option> --}}
+
+  @foreach ($karte as $karta)
+  <div class="seat 3-5 {{ '3-5' == $karta->sediste ? "occupied" : ""}}" id="10-12"></div>
+  @endforeach
+  
   
 
  
@@ -205,14 +214,26 @@
 
 
 </div>
+<form action="{{ url('/Kupovina') }}" method="POST">
+  @csrf
+  <input type="text" value="{{$projekcija->cena_karte}}"  id="cena_karte" name="cena_karte" hidden>
+  <input type="text" value="{{$projekcija->projekcija_id}}"  id="projekcija_id" name="projekcija_id" hidden>
+  <input type="text" value="{{$projekcija->film_id}}"  id="film_id" name="film_id" hidden>
+  <input type="text" value=""  id="count_ul" name="count_ul" hidden>
+  <input type="text" value=""  id="sedista_ul" name="sedista_ul" hidden>
+  
+  <p class="text float-end">
+    Izabrali Ste <span id="count"></span> mesta po ceni od <span
+      id="total"
+      >0</span> Din <span id="sedista" name="sedista"hidden></span>
+      <br>
+      <a href="" class="btn btn-danger bsb-btn-xl float-end"><button style="color: white" onclick="myFunction()">Kupi Karte</button></a>
+  </p>
 
-<p class="text float-end">
-  Izabrali Ste <span id="count">0</span> mesta po ceni od <span
-    id="total"
-    >0</span> Din
-    <br>
-    <a href="" class="btn btn-danger bsb-btn-xl float-end">Kupi Karte</a>
-</p>
+</form>
+
+
+
    
 
   
@@ -222,6 +243,16 @@
 
  {{-- JS Za Salu --}}
  <script src="{{ asset('js/sala.js') }}"></script>
+
+ <script>
+  function myFunction() {
+    var count = $('#count').html();
+    $('#count_ul').val(count);
+    var sedista = $('#sedista').html();
+    $('#sedista_ul').val(sedista);
+}
+
+ </script>
         
 
 
