@@ -8,8 +8,7 @@
 
 
 
-<link rel="stylesheet" href="css/owl.carousel.css">    
-<link rel="stylesheet" href="css/owl.carousel.min.css">   
+  
   <div>
     <div class=" AktFilmovi text-center">
         <h1>Aktuelni Filmovi</h1>
@@ -30,7 +29,7 @@
                                 Pocetak prikazivanja {{$filmCard1->pocetak_prikazivanja}}
                             </p>
                             <p>
-                                <a href="#" class="btn btn-danger btn-lg">Kupi Karte</a>
+                                <a href="{{url('/Repertoar/Film/' . $filmCard1->id)}}" class="btn btn-danger btn-lg">Kupi Karte</a>
                             </p>
                         </div>
                     </div>
@@ -42,7 +41,7 @@
                                 Pocetak prikazivanja {{$filmCard2->pocetak_prikazivanja}}
                             </p>
                             <p>
-                                <a href="#" class="btn btn-danger btn-lg">Kupi Karte</a>
+                                <a href="{{url('/Repertoar/Film/' . $filmCard2->id)}}" class="btn btn-danger btn-lg">Kupi Karte</a>
                             </p>
                         </div>
                     </div>
@@ -54,7 +53,7 @@
                                 Pocetak prikazivanja {{$filmCard3->pocetak_prikazivanja}}
                             </p>
                             <p>
-                                <a href="#" class="btn btn-danger btn-lg">Kupi Karte</a>
+                                <a href="{{url('/Repertoar/Film/' . $filmCard3->id)}}" class="btn btn-danger btn-lg">Kupi Karte</a>
                             </p>
                         </div>
                     </div>
@@ -67,7 +66,7 @@
                                 Pocetak prikazivanja {{$filmCard4->pocetak_prikazivanja}}
                             </p>
                             <p>
-                                <a href="#" class="btn btn-danger btn-lg">Kupi Karte</a>
+                                <a href="{{url('/Repertoar/Film/' . $filmCard4->id)}}" class="btn btn-danger btn-lg">Kupi Karte</a>
                             </p>
                         </div>
                     </div>
@@ -79,7 +78,7 @@
                                 Pocetak prikazivanja {{$filmCard5->pocetak_prikazivanja}}
                             </p>
                             <p>
-                                <a href="#" class="btn btn-danger btn-lg">Kupi Karte</a>
+                                <a href="{{url('/Repertoar/Film/' . $filmCard5->id)}}" class="btn btn-danger btn-lg">Kupi Karte</a>
                             </p>
                         </div>
                     </div>

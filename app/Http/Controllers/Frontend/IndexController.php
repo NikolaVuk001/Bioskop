@@ -3,41 +3,169 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Projekcija;
+use Illuminate\Database\Query\JoinClause;
 use Illuminate\Http\Request;
 use App\Models\Film;
 use App\Models\Multi_Slike;
 use Carbon\Carbon;
+use Illuminate\Support\Str;
+use Illuminate\Database\Query\Builder;
+use Illuminate\Support\Facades\DB;
+use PHPUnit\Framework\Constraint\IsEmpty;
+
+
 
 
 class IndexController extends Controller
 {
 
-    public function index(){
+    public function index()
+    {
         return view("home");
     }
 
-    public function FilmDetails($id){
-        $film = Film::where("id",$id)->first();
+    public function FilmDetails($id)
+    {
+        $film = Film::where("id", $id)->first();
         $slike = Multi_Slike::where("film_id", $id)->get();
-        return view('movie', compact('film','slike'));
+        return view('movie', compact('film', 'slike'));
 
     }
     //
 
-    public function SviFilmoviUPonudi(){
+    public function SviFilmoviUPonudi()
+    {
         $films = Film::where("trenutno_aktivan", 1)->get();
         $uskoro = 0;
-        return view('allFilmovi', compact('films','uskoro'));
+        $Zanr = "";
+        return view('allFilmovi', compact('films', 'uskoro', 'Zanr'));
     }
-    public function SviFilmoviUskoro(){        
-        $date = Carbon::today();        
+    public function SviFilmoviUskoro()
+    {
+        $date = Carbon::today();
         $films = Film::where('pocetak_prikazivanja_date', '>', $date)->get();
         $uskoro = 1;
-        return view('allFilmovi',compact('films', 'uskoro'));
+        $Zanr = "";
+        return view('allFilmovi', compact('films', 'uskoro', 'Zanr'));
     }
-    public function SviFilmoviZanr($zanr){
-        $films = Film::where("zanr", 'LIKE', '%' . $zanr .'%')->get();
+    public function SviFilmoviZanr($zanr)
+    {
+        $films = Film::where("zanr", 'LIKE', '%' . $zanr . '%')->get();
         $uskoro = 0;
-        return view('allFilmovi',compact('films','uskoro'));
+        $Zanr = Str::ucfirst($zanr);
+        return view('allFilmovi', compact('films', 'uskoro', 'Zanr'));
+    }
+
+    public function RepertoarDanas()
+    {
+
+
+        $datum_p = Carbon::today()->toDateString();
+        $films = DB::table('films')
+            ->Join('projekcijas', function (JoinClause $join) {
+                $join->on('films.id', '=', 'projekcijas.film_id')
+                    ->whereDate('projekcijas.datum_i_vreme', Carbon::today());
+            })
+            ->select('films.*')->distinct()
+            ->get();
+
+        $projekcije = Projekcija::whereDate('datum_i_vreme', Carbon::today())->get();
+
+
+        return view('repertoar_all', compact('projekcije', 'films', 'datum_p'));
+
+
+    }
+
+    public function RepertoarZanr(Request $request, $datum, $zanr)
+    {
+
+        if ($zanr != 'all') {
+            $datum_p = $datum;
+            $zanr_p = $zanr;
+            session()->put('datum', $datum);
+
+            $films = DB::table('films')
+                ->join('projekcijas', function (JoinClause $join) use ($datum) {
+                    $join->on('films.id', '=', 'projekcijas.film_id')
+                        ->whereDate('projekcijas.datum_i_vreme', Carbon::parse($datum));
+                })
+                ->select('films.*')->distinct()
+                ->where("zanr", 'LIKE', '%' . $zanr . '%')
+                ->get();
+
+
+            $projekcije = Projekcija::whereDate('datum_i_vreme', Carbon::parse($datum))->get();
+
+
+            return view('repertoar_datum', compact('projekcije', 'films', 'datum_p', 'zanr_p'));
+
+        } else {
+
+            $datum_p = $datum;
+            $films = DB::table('films')
+                ->join('projekcijas', function (JoinClause $join) use ($datum) {
+                    $join->on('projekcijas.film_id', '=', 'films.id')
+                        ->whereDate('projekcijas.datum_i_vreme', Carbon::parse($datum));
+                })
+                ->select('films.*')->distinct()
+                ->get();
+
+            $projekcije = Projekcija::whereDate('datum_i_vreme', Carbon::parse($datum))->get();
+
+
+            return view('repertoar_all', compact('projekcije', 'films', 'datum_p'));
+        }
+    }
+
+
+    public function RepertoarFilm($id)
+    {
+        $datum_p = Carbon::today()->toDateString();
+        $films = DB::table('films')
+            ->Join('projekcijas', function (JoinClause $join) {
+                $join->on('films.id', '=', 'projekcijas.film_id')
+                    ->whereDate('projekcijas.datum_i_vreme', Carbon::today());
+            })
+            ->select('films.*')->distinct()
+            ->where('films.id', $id)
+            ->get();
+
+        $projekcije = Projekcija::whereDate('datum_i_vreme', Carbon::today())->get();
+
+        return view('repertoar_film', compact('projekcije', 'films', 'datum_p', 'id'));
+
+    }
+
+    public function RepertoarFilmDatum($id, $datum){
+        $datum_p = $datum;
+        $films = DB::table('films')
+            ->select('films.*')->distinct()
+            ->where('films.id', $id)
+            ->get();
+
+        $projekcije = Projekcija::whereDate('datum_i_vreme', Carbon::parse($datum))->get();
+
+
+        return view('repertoar_film', compact('projekcije', 'films', 'datum_p', 'id'));
+    }
+
+
+    public function ProjekcijaOdabirMesta($id){
+        $projekcija = DB::table('projekcijas')
+            ->Join('films', 'projekcijas.film_id', '=', 'films.id')
+            ->select('*')
+            ->where('projekcijas.id', $id)
+            ->first();
+
+            
+            
+                
+                return view('odabir_mesta',compact('projekcija'));
+
+            
+            
+        
     }
 }

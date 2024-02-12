@@ -21,7 +21,7 @@
         <link rel="stylesheet" href="{{asset('css/app-sW5s0cay.css')}}">
         <link rel="stylesheet" href="{{asset('css/app.css')}}">
         {{-- Bootstrap CSS --}}
-        <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">        
+        <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">        
         {{-- Owl Carousel CSS --}}
         <link rel="stylesheet" href="{{asset('css/owl.carousel.css')}}">    
         <link rel="stylesheet" href="{{asset('css/owl.carousel.min.css')}}">    
@@ -34,6 +34,13 @@
         <link rel="stylesheet" href="{{asset('frontend/assets/css/default.css')}}">
         <link rel="stylesheet" href="{{asset('frontend/assets/css/style.css')}}">
         <link rel="stylesheet" href="{{asset('frontend/assets/css/responsive.css')}}">
+
+
+        {{-- CSS Style Za Vece Button-e u Bootstrapu --}}
+        <link rel="stylesheet" href="https://unpkg.com/bs-brain@2.0.3/tutorials/buttons/button-1/assets/css/button-1.css">
+
+        
+        
 
        
 
@@ -99,6 +106,8 @@
         <script src="{{ asset('frontend/assets/js/wow.min.js') }}"></script>
         <script src="{{ asset('frontend/assets/js/plugins.js') }}"></script>
         <script src="{{ asset('frontend/assets/js/main.js') }}"></script>
+
+         
         
         
         

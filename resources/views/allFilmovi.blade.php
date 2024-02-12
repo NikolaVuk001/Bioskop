@@ -3,6 +3,7 @@
 @section('content')
 
 
+
 <div class="container mt-5 all-filmovi">
 
 
@@ -27,7 +28,12 @@
     @endif
     
     <li class="nav-item dropdown">
+      @if ($Zanr == "")
       <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Zanr</a>
+        @else
+        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">{{$Zanr}}</a>
+      @endif
+      
       <ul class="dropdown-menu">        
         <li><a class="dropdown-item" href="{{url('/Film/All/Zanr/akcija')}}">Akcija</a></li>
         <li><a class="dropdown-item" href="{{url('/Film/All/Zanr/drama')}}">Drama</a></li>
@@ -52,7 +58,7 @@
         <div class="card-body">
           <h5 class="card-title">{{$film->naziv_filma}}</h5>
           <p class="card-text">{{$film->duzina_filma}}<br>Pocetak Prikazivanja | {{$film->pocetak_prikazivanja}}</p>
-          <a href="#" class="btn btn-danger btn-lg">Kupi Karte</a>
+          <a href="{{url('/Repertoar/Film/' . $film->id)}}" class="btn btn-danger btn-lg">Kupi Karte</a>
         </div>
       </div>
     </div>

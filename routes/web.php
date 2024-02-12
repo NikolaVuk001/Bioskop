@@ -26,6 +26,10 @@ Route::get('/', function () {
     return view('home');
 });
 
+Route::get('Test', function () {
+    return view('TEST');
+});
+
 
 // Grupisanje Kontrolera Radi Laksesg rutiranja
 Route::controller(movieController::class)->group(function (){
@@ -100,6 +104,11 @@ Route::controller(ProjekcijaController::class)->group(function () {
     Route::get('/Film/All/U-Ponudi', [IndexController::class, 'SviFilmoviUPonudi']);
     Route::get('/Film/All/Uskoro', [IndexController::class, 'SviFilmoviUskoro']);
     Route::get('/Film/All/Zanr/{zanr}', [IndexController::class, 'SviFilmoviZanr']);
+    Route::get('/Repertoar', [IndexController::class, 'RepertoarDanas']);
+    Route::get('/Repertoar/{datum}/Zanr/{zanr}', [IndexController::class, 'RepertoarZanr']);
+    Route::get('/Repertoar/Film/{id}', [IndexController::class, 'RepertoarFilm']);
+    Route::get('/Repertoar/Film/{id}/Datum/{datum}', [IndexController::class, 'RepertoarFilmDatum']);
+    Route::get('/Projekcija/{id}/OdabirMesta', [IndexController::class, 'ProjekcijaOdabirMesta']);
 
 
 

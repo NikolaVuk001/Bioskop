@@ -7,6 +7,8 @@ body{
   background: rgb(0,212,255);
   background: linear-gradient(109.6deg, rgb(9, 9, 116) 11.2%, rgb(103, 1, 117) 53.7%, rgb(0, 212, 255) 100.2%);  
   color: white!important;
+  display: flex;
+  
   
 
   background-repeat: no-repeat;
@@ -170,9 +172,14 @@ body{
 
 /*================ CAROUSEL ===================*/
 
+
+
 #carousel {
-  box-shadow: 0 .5rem .5rem rgba(0,0,0,.2);
+  box-shadow: 0 .5rem .5rem rgba(0,0,0,.2);  
   /* margin-top: 0.5rem; */
+  
+  
+ 
 }
 
 .carousel-item img{
@@ -627,9 +634,9 @@ select option{
   height: 1.5vh!important;
   margin-left: 1vw;
 }
-select::-ms-expand {
+/* select::-ms-expand {
   display: none;
-}
+} */
 
 .filter-select{
     -webkit-appearance: none;
@@ -639,8 +646,9 @@ select::-ms-expand {
 
 .filter-navbar li:after{
   content: url("../assets/icons/circle-chevron-down-solid.svg");
-  padding-left: 0.2rem;
-  padding-top: 0.1rem;
+  padding-left: 0rem;
+  padding-top: 0.4rem;
+  
   filter: invert(100%) sepia(85%) saturate(0%) hue-rotate(238deg) brightness(103%) contrast(101%);
   position: absolute;
   color: white;
@@ -648,8 +656,79 @@ select::-ms-expand {
 }
 
 
+/* ================ Filmovi =================== */
+
+#avatar {
+  
+  margin: 1rem!important;
+  
+  /* make a square container */
+  width: 12vw;
+  height: 12vh;
+
+  /* fill the container, preserving aspect ratio, and cropping to fit */
+  background-size: cover;
+
+  /* center the image vertically and horizontally */
+  background-position: top center;
+
+  /* round the edges to a circle with border radius 1/2 container size */
+  border-radius: 50%;
+}
+
+button.projekcija-btn {
+  /* padding:0.6rem 0; */
+  /* width: 5vw!important;   */
+  color:#fff;  
+  border: 1px solid white!important;
+  border-radius: 100px;
+  font-size:1.1em;
+  cursor:pointer;
+  margin:1em;
+  background-color:transparent;
+  text-align: center!important;  
+  transition: 0.4s;
+  
+}
+button.projekcija-btn:hover{
+
+  background-color: #b02424;
+  border: #b02424;
+}
+.projekcija-card
+{
+  padding-top: 3rem;
+  border-bottom: 10px double white!important;
+}
+
+.projekcija-card img{
+  padding-bottom: 2rem!important;
+}
+
+.projekcija-card h5{
+  font-size: 4vh!important;
+}
+
+.projekcija-card h4{
+  font-size: 3vh!important;
+}
+
+.projekcija-card p{
+  font-size: 2vh!important;
+  color: rgb(177, 177, 177);
+}
 
 
+
+
+
+
+
+
+
+
+
+/* ================ Filmovi =================== */
 
 
 
