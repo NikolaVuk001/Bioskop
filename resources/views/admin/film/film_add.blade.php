@@ -34,7 +34,7 @@
 
                 <div class="form-body mt-4">
                     <div class="row">
-                        <div class="col-lg-9">
+                        <div class="col-lg-7">
                             <div class="border border-3 p-4 rounded">
                                 <div class="mb-3 form-group">
                                     <label for="inputProductTitle" class="form-label">Naziv Filma</label>
@@ -118,11 +118,7 @@
 
                                 
 
-                                <div class="mb-3 form-group">
-                                    <label for="inputPrice" class="form-label">Cena Karte</label>
-                                    <input type="text" name="cena_karte" class="form-control" id="inputPrice"
-                                        placeholder="00.00">
-                                </div>
+                              
                                                                
                                 <div class="mb-3 d-flex align-items-end justify-content-end">                                  
                                     <input type="submit" class="btn btn-primary btn-lg px-4" value="Dodaj Film"/>                                                              
@@ -132,12 +128,12 @@
                             </div>
                         </div>
 
-                        <div class="col-lg-3">
+                        <div class="col-lg-5">
                             <div class="border border-3 p-4 rounded">
                                 <div class="row g-3">
                                     <div class="col-12 justify-content-center">
 
-                                        <img src="" id="mainPoster" />
+                                        <img src="" id="mainPoster" class="img-responsive"/>
                                     </div>
 
 

@@ -118,6 +118,9 @@ Route::middleware(['auth','role:admin'])->group(function (){
     Route::middleware(['auth','role:user'])->group(function (){        
         Route::controller(UserController::class)->group(function () {
             Route::post('/Kupovina', 'Kupovina')->name('karte.kupovina');
+            Route::get('/Profil','UserProfil')->name('user.profil');
+            Route::post('/Profil/Update','UserProfilUpdate')->name('user.update');
+            
         });
     });
 

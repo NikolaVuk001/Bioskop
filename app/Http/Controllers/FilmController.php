@@ -50,8 +50,7 @@ class FilmController extends Controller
             'glumci' => $request->glumci,
             'reziser' => $request->reziser,
             'distributer' => $request->distributer,
-            'trenutno_aktivan' => $aktivan,
-            'cena_karte' => $request->cena_karte,
+            'trenutno_aktivan' => $aktivan,            
             'created_at' => Carbon::now(),
 
         ]);
@@ -100,8 +99,7 @@ class FilmController extends Controller
             'pocetak_prikazivanja' => $request->pocetak_prikazivanja,
             'glumci' => $request->glumci,
             'reziser' => $request->reziser,
-            'distributer' => $request->distributer,
-            'cena_karte' => $request->cena_karte,
+            'distributer' => $request->distributer,            
             'updated_at' => Carbon::now(),
         ]);
 

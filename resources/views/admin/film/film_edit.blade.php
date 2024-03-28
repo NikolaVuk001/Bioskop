@@ -33,7 +33,7 @@
                     <input type="hidden" value="{{ $films->id }}" name="id">
                     <div class="form-body mt-4">
                         <div class="row">
-                            <div class="col-lg-9">
+                            <div class="col-md-7">
                                 <div class="border border-3 p-4 rounded">
                                     <div class="mb-3 form-group">
                                         <label for="inputProductTitle" class="form-label">Naziv Filma</label>
@@ -63,24 +63,7 @@
                                     <div class="mb-3 form-group">
                                         <label for="inputProductDescription" class="form-label">Kratak opis</label>
                                         <textarea class="form-control" name="opis_kratak" rows="3">{{ $films->opis_kratak }}</textarea>
-                                    </div>
-                                    {{-- 
-                                <div class="mb-3 form-group">
-                                    <label for="inputProductDescription" class="form-label">Poster</label>
-                                    <input class="form-control" type="file" id="formFile" name="poster"
-                                        onchange="mainPosterUrl(this)">
-
-                                </div>
-                                
-                                <div class="mb-3 form-group">
-                                    <label for="inputProductDescription" class="form-label">Slide Poster</label>
-                                    <input class="form-control" type="file" id="formFile" name="slide_poster">
-                                </div>
-
-                                <div class="mb-3 form-group">
-                                    <label for="inputProductDescription" class="form-label">Slike Filma</label>                                    
-                                    <input class="form-control" type="file" id="slike_filma[]" name="slike_filma[]" multiple>
-                                </div> --}}
+                                    </div>                                    
 
                                     <div class="mb-3 form-group">
                                         <label for="inputProductTitle" class="form-label">Trailer URL</label>
@@ -130,7 +113,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-3">
+                            <div class="col-lg-5">
                                 <div class="border border-3 p-4 rounded">
                                     <div class="row g-3">
                                         <div class="col-12 justify-content-center">
@@ -329,28 +312,5 @@
 
 
 
-    {{-- 
-    <script type="text/javascript">
-        function mainPosterUrl(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-                reader.onload = function(e) {
-                    $('#mainPoster').attr('src', e.target.result);
-                };
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
-    </script>
-
-    <script type="text/javascript">
-        function slidePosterUrl(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-                reader.onload = function(e) {
-                    $('#slidePoster').attr('src', e.target.result);
-                };
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
-    </script> --}}
+  
 @endsection

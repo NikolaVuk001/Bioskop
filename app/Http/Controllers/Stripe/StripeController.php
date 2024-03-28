@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Stripe;
 
 use App\Http\Controllers\Controller;
+use App\Mail\RacunMail;
 use Illuminate\Http\Request;
 use App\Models\Film;
 use App\Models\Karta;
@@ -12,12 +13,15 @@ use App\Models\Sala;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+
 
 
 class StripeController extends Controller
 {
     public function StripeProdaja(Request $request)
     {
+        
 
         // Set your secret key. Remember to switch to your live secret key in production.
         // See your keys here: https://dashboard.stripe.com/apikeys
@@ -75,7 +79,20 @@ class StripeController extends Controller
             ]);
             
         }
+        //Send Email
 
+        $invoice = Racun::findOrFail($racun_id);
+
+        $data = [
+            'invoice_no' => $invoice->invocie_no,
+            'amaount' => $invoice->uk_Cena,
+            'name'=> Auth::user()->name,
+            'email'=> Auth::user()->email,
+        ];
+
+        
+
+        //Notifikacija O Uspesnosti
         $notification = array(
             'message' => 'Uspesno Kupljene Karte',
             'alert-type' => 'success'

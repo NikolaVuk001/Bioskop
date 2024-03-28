@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Karta;
 use App\Models\Projekcija;
+use App\Models\Sediste;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Http\Request;
 use App\Models\Film;
@@ -159,12 +160,23 @@ class IndexController extends Controller
             ->select('projekcijas.id as projekcija_id', 'films.poster as poster', 'films.naziv_filma as naziv_filma', 'projekcijas.datum_i_vreme as datum_i_vreme', 'projekcijas.cena_karte as cena_karte', 'projekcijas.sala_projekcije as sala', 'films.id as film_id')
             ->where('projekcijas.id', $id)
             ->first();
-        $karte = Karta::where('projekcija_id', $id)->get();
+        $karte = DB::table('kartas')
+            ->select('kartas.sediste as sediste')
+            ->where('kartas.projekcija_id',$id)
+            ->get()
+            ->toArray();
+        $sedista = Sediste::latest()->get();
+
+        $niz_karata = [];
+        for($i = 0; $i < count($karte); $i++){
+            $niz_karata[$i] = $karte[$i]->sediste;
+        }
+        // dd($niz_karata);
 
             
             
                 
-                return view('odabir_mesta',compact('projekcija','karte'));
+        return view('odabir_mesta',compact('projekcija','sedista','niz_karata'));
 
             
             

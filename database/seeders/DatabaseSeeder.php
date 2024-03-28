@@ -13,6 +13,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        $this->call(SalaTableSeeder::class);
         // \App\Models\User::factory(10)->create();
 
         // \App\Models\User::factory()->create([
@@ -21,14 +22,7 @@ class DatabaseSeeder extends Seeder
         // ]);
 
 
-        for ($i = 0 ; $i < 12; $i++) {
-            for ($j = 0; $j < 12; $j++) {
-                DB::table('sedistes')->insert([
-                    'oznaka' => $i+1 . '-' . $j+1,
-                    'sala' => '1',
-                    ]);
-                }
-            }
+        
 
         
     }

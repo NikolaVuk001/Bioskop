@@ -21,7 +21,7 @@
         <img src="{{url($projekcija->poster)}}" class="img-fluid " id="avatar" alt="...">
       </div>
       <div class="col-md-8">
-        <div class="card-body">
+        <div class="header_sala">
           <h5 class="card-title">{{$projekcija->naziv_filma}}</h5>
           
           
@@ -199,12 +199,31 @@
       </div>
   </div> --}}
 
-  {{-- <div class="to-do to-do-wrap @php echo get_field('to-do-repeater') ? ' complete' : '' @endphp"></div>
-  <option value="all" {{ 'all' == $zanr_p ? "selected" : "" }}>Sve</option> --}}
+ 
 
-  @foreach ($karte as $karta)
-  <div class="seat 3-5 {{ '3-5' == $karta->sediste ? "occupied" : ""}}" id="10-12"></div>
-  @endforeach
+
+  <div class="container containerSala">
+    <div class="screen"></div>
+    <div class="container containerSala">
+  @php
+ 
+    foreach ($sedista as $key => $sediste) {
+      if ($key+1 == 1 || $key+1 == 13 || $key+1 == 25 || $key+1 == 37 || $key+1 == 49 || $key+1 == 61 || $key+1 == 73 || $key+1 == 85 || $key+1 == 97 || $key+1 == 109 ) {
+        echo '<div class="row">';
+      }
+      if(in_array($sediste->oznaka, $niz_karata))
+      {
+        echo '<div class="seat occupied" id="' . $sediste->oznaka . '"></div>';
+      }
+      else {
+        echo '<div class="seat" id="' . $sediste->oznaka . '"></div>';
+      }
+      if($key+1 == 12 || $key+1 == 24 || $key+1 == 36 || $key+1 == 48 || $key+1 == 60 || $key+1 == 72 || $key+1 == 84 || $key+1 == 96 || $key+1 == 108 || $key+1 == 120 ){
+        echo '</div>';
+      }
+    }
+  @endphp
+    </div>
   
   
 
