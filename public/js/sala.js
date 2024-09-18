@@ -7,43 +7,43 @@ const movieSelect = document.getElementById("cena_karte");
 const cena_karte = document.getElementById("cena_karte");
 const sedista_ids = [];
 
-populateUI();
-
 let ticketPrice = cena_karte.value;
-console.log(cena_karte.value);
-
-
-
 
 updateSelectedCount = () => {
   const selectedSeats = document.querySelectorAll(".row .seat.selected");
   let sedista_ids = [];
-  selectedSeats.forEach((seat, index) => {
-    
+  selectedSeats.forEach((seat) => {
     sedista_ids.push(seat.id);
   });
 
+  // Provera da li su sedista u istom redu i da li su jedna pored drugog
+  if (selectedSeats.length >= 0) {
+    const rowNumbers = Array.from(selectedSeats).map(seat => seat.id.split('-')[0]);
+    const seatNumbers = Array.from(selectedSeats).map(seat => parseInt(seat.id.split('-')[1]));
     
+    const isSameRow = rowNumbers.every(row => row === rowNumbers[0]);
+    const isConsecutive = seatNumbers.sort((a, b) => a - b).every((num, idx, arr) => idx === 0 || num === arr[idx - 1] + 1);
 
+    if (selectedSeats.length <= 5 && isSameRow && isConsecutive) {
+      // Uspesna selekcija
+      sedista.innerText = sedista_ids;
 
-  console.log(sedista_ids);
-  sedista.innerText = sedista_ids;
+      const seatsIndex = [...selectedSeats].map((seat) => {
+        return [...seats].indexOf(seat);
+      });
 
-  const seatsIndex = [...selectedSeats].map((seat) => {
-    return [...seats].indexOf(seat);
-  });
+      localStorage.setItem("selectedSeats", JSON.stringify(seatsIndex));
 
-  localStorage.setItem("selectedSeats", JSON.stringify(seatsIndex));
+      const selectedSeatsCount = selectedSeats.length;
 
-  const selectedSeatsCount = selectedSeats.length;
-
-  count.innerText = selectedSeatsCount;
-  total.innerText = selectedSeatsCount * ticketPrice;
-  
-  
-  
-  
-  
+      count.innerText = selectedSeatsCount;
+      total.innerText = selectedSeatsCount * ticketPrice;
+    } else {
+      // Neuspesna selekcija, poruka se salje
+      selectedSeats[selectedSeats.length - 1].classList.remove('selected');
+      alert('You can select a maximum of 5 seats, and they must be in the same row and consecutive.');
+    }
+  }
 };
 
 function populateUI() {
@@ -53,10 +53,8 @@ function populateUI() {
     
     seats.forEach((seat, index) => {
       if (selectedSeats.indexOf(index) > -1) {
-        seat.classList.add("selected");        
-        
-      }
-      
+        seat.classList.add("selected");                
+      }      
     });
   }
   
@@ -83,9 +81,28 @@ container.addEventListener("click", (e) => {
   ) {
     e.target.classList.toggle("selected");
 
-    updateSelectedCount();
+    // Proveri dostupnost
+    if (isValidSelection()) {
+      updateSelectedCount();
+    } else {      
+      e.target.classList.toggle("selected");
+      toastr.info('Mozete izabrati samo pet sedišta po rezervaciji ili kupovini i ona moraju biti jedna pored drugog.');
+    }
   }
 });
+
+const isValidSelection = () => {
+  const selectedSeats = document.querySelectorAll(".row .seat.selected");
+  if (selectedSeats.length === 0) return true;
+  
+  const rowNumbers = Array.from(selectedSeats).map(seat => seat.id.split('-')[0]);
+  const seatNumbers = Array.from(selectedSeats).map(seat => parseInt(seat.id.split('-')[1]));
+  
+  const isSameRow = rowNumbers.every(row => row === rowNumbers[0]);
+  const isConsecutive = seatNumbers.sort((a, b) => a - b).every((num, idx, arr) => idx === 0 || num === arr[idx - 1] + 1);
+
+  return selectedSeats.length <= 5 && isSameRow && isConsecutive;
+};
 
 updateSelectedCount();
 

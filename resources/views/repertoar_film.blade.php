@@ -46,7 +46,7 @@
 
   
   
-    @foreach ($films as $film)
+    
     <div class="card mb-3 mt-10 projekcija-card" style="max-width: 100%">
       <div class="row g-0">
         <div class="col-md-4">
@@ -59,14 +59,12 @@
             <p class="card-text">{{$film->duzina_filma}}</p>
             <p class="card-text">Zanr: {{$film->zanr}}</p>
 
-            @php
-              $projekcije_filma = App\Models\Projekcija::where('film_id', $film->id)->whereDate('datum_i_vreme', Carbon\Carbon::parse($datum_p))->get();              
-            @endphp
+            
             <div class="row">
-            @foreach ($projekcije_filma as $projekcija)
+            @foreach ($projekcije as $projekcija)
 
-            <div class="col-4">
-              <button class="btn btn-primary bsb-btn-2xl projekcija-btn">{{Illuminate\Support\Str::substr($projekcija->datum_i_vreme, 11, 5)}}</button>
+            <div class="col-4">              
+              <a href="{{url('/Projekcija/' . $projekcija->id . '/OdabirMesta')}}"><button class="btn btn-primary bsb-btn-2xl projekcija-btn">{{Illuminate\Support\Str::substr($projekcija->datum_i_vreme, 11, 5)}}</button></a>
 
             </div>
             
@@ -89,7 +87,7 @@
     </div>
   </div>
       
-    @endforeach
+    
 
 
     
@@ -100,8 +98,8 @@
       
       var $datum = $(this).find(':selected').val();
       var $id = $('#id').val();
-      
-      var url = '/Repertoar/Film/'+ $id + '/Datum/' + $datum;
+      var baseUrl = '{{ url('/Repertoar') }}';
+      var url = baseUrl + '/Film/'+ $id + '/Datum/' + $datum;
       if (url != "") {                        
         // $("#output").text(url);
         window.location.href = url;
@@ -109,6 +107,8 @@
     });
   });
 </script>
+
+
 
 
 

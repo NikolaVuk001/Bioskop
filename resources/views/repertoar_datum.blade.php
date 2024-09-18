@@ -5,6 +5,14 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
+@php
+  $datum_today_str = Carbon\Carbon::today()->toDateString();
+  $datum_str = Carbon\Carbon::parse($datum_p);
+  $datum_str = date("d.m.Y", strtotime($datum_str ));
+  
+  
+@endphp
+
 <div class="container">
   <nav class="navbar nav-expand-lg filter-navbar">
       <div class="container justify-content-center">
@@ -12,8 +20,9 @@
               <li class="nav-item">
                 <i class="fa-regular fa-calendar-days"></i>
                 <label for="#datumi" class="hidden-mobile">Datum:</label>
-                  <select name="datum" id="datumi" class="filter-select">
-                  </select>
+                <select name="datum" id="datumi" class="filter-select">
+                  <option id="x" selected>{{$datum_str}}</option>                  
+                </select>
               </li>                           
               <div class="vr hidden-xs hidden-mobile"></div>
               <li>
@@ -43,7 +52,7 @@
 
 
     @foreach ($films as $film)
-
+    
     <div class="card mb-3 mt-10 projekcija-card" style="max-width: 100%">
       <div class="row g-0">
         <div class="col-md-4">
@@ -63,7 +72,7 @@
             @foreach ($projekcije_filma as $projekcija)
 
             <div class="col-4">
-              <button class="btn btn-primary bsb-btn-2xl projekcija-btn">{{Illuminate\Support\Str::substr($projekcija->datum_i_vreme, 11, 5)}}</button>
+              <a href="{{url('/Projekcija/' . $projekcija->id . '/OdabirMesta')}}"><button class="btn btn-primary bsb-btn-2xl projekcija-btn">{{Illuminate\Support\Str::substr($projekcija->datum_i_vreme, 11, 5)}}</button></a>
             </div>
               
             @endforeach
@@ -93,7 +102,8 @@
           var storedValue = localStorage.getItem('#zanr');
           var $zanr = ($(this).find(':selected').val()).toString();
           var $datum = $('#datumi').find(':selected').val();
-          var url = '/Repertoar/' + $datum + '/Zanr/' + $zanr;
+          var baseUrl = '{{ url('/Repertoar') }}';
+          var url = baseUrl + '/' + $datum + '/Zanr/' + $zanr;
           if (url != "") {                        
             //$("#output").text(url);
             window.location.href = url;
@@ -108,7 +118,8 @@
       $("#datumi").change(function() {
       var $datum = $(this).find(':selected').val();
       var $zanr = $('#zanr').find(':selected').val();
-      var url = '/Repertoar/' + $datum + '/Zanr/' + $zanr;
+      var baseUrl = '{{ url('/Repertoar') }}';
+      var url = baseUrl +'/' + $datum + '/Zanr/' + $zanr;
       if (url != "") {                        
         // $("#output").text(url);
         window.location.href = url;

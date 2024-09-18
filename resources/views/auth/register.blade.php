@@ -56,7 +56,7 @@
                 {{ __('Vec Imate Nalog?') }}
             </a>
 
-            <x-primary-button class="ms-4">
+            <x-primary-button class="ms-4" onclick="this.disabled=true; this.form.submit();">
                 {{ __('Registracija') }}
             </x-primary-button>
         </div>

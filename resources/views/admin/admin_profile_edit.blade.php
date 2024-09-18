@@ -10,7 +10,7 @@
         <div class="card">
             <div class="card-body">
 
-                <h4 class="card-title">Edit</h4>
+                <h4 class="card-title">Izmena Profila</h4>
                 <form action="{{ route('store.profile') }}" method="post" enctype="multipart/form-data">                
                     @csrf
                     <p class="card-title-desc"></p>
@@ -46,7 +46,7 @@
                     
                     <!-- end row -->
                     <div>
-                    <button class="btn btn-primary btn-md float-end" type="submit">Izmeni</button>
+                    <button class="btn btn-primary btn-md float-end" onclick="this.disabled=true; this.form.submit();" type="submit">Izmeni</button>
                     </div>
                     <!-- end row -->
                 </form>

@@ -15,8 +15,20 @@ class Role
      */
     public function handle(Request $request, Closure $next, $role): Response
     {
-        if($request->user()->role !== $role){
-            return redirect('/');
+
+        $roles = is_array($role)
+        ? $role
+        : explode('|', $role);
+        
+        
+        if (!in_array($request->user()->role,$roles)) {
+            if($request->user()->role == 'admin' || $request->user()->role == 'moderator') {
+                return redirect('/admin/dashboard');
+            }
+            else {
+                return redirect('/');
+            }
+        
         }
         return $next($request);
     }

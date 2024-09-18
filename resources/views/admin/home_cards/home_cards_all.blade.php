@@ -97,7 +97,7 @@
 
                                 
                                 <br>
-                                <input type="submit" class="btn btn-info waves-effect waves-light" value="Izmeni Slide">
+                                <input type="submit" onclick="this.disabled=true; this.form.submit();" class="btn btn-info waves-effect waves-light" value="Izmeni Slide">
                                 <!-- end row -->
                             </form>
                         </div>

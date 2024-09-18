@@ -11,7 +11,7 @@
   
   <div>
     <div class=" AktFilmovi text-center">
-        <h1>Aktuelni Filmovi</h1>
+        <h1 class="heading-txt">Aktuelni Filmovi</h1>
     </div>
 </div>
 <!-- card area start -->

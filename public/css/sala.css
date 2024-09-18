@@ -1,9 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
 
 :root {
-  --selected-color: #2ecc71;
-  --occupied-color: #e74c3c;
-  --available-color: #fff;
+  --selected-color: #2ecc71!important;
+  --occupied-color: #e74c3c!important;
+  --available-color: #fff!important;
 }
 
 * {
@@ -40,16 +40,17 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
+  padding: 0%!important;
   
-  
-  
+
 }
 
 .seat {
-  background-color: #444451;
-  height: 24px;
-  width: 30px; /*15*/
-  margin: 24px; /*12*/
+  background-color: var(--available-color);
+  height: 1vw;
+  width: 1vw; /*15*/
+  margin: 1vw; /*12*/
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
 }
@@ -59,16 +60,16 @@
 }
 
 .seat.occupied {
-  background-color: var(--available-color);
+  background-color: var(--occupied-color);
 }
 
 /* Selects the second row f*/
 .seat:nth-of-type(2) {
-  margin-right: 100px;
+  margin-right: 5vw;
 }
 
 .seat:nth-last-of-type(2) {
-  margin-left: 100px;
+  margin-left: 5vw;
 }
 
 .seat:not(.occupied) {
@@ -112,7 +113,7 @@
 .screen {
   background-color: #fff;
   height: 70px;
-  width: 100%;
+  width: 50vw;
   margin: 15px 0;
   transform: rotateX(-45deg);
   box-shadow: 0 3px 10px rgba(255, 255, 255, 0.7);
@@ -120,7 +121,7 @@
 
 p.text {
   font-family: 'Anton', sans-serif;
-  font-size: 2vh;
+  font-size: 1.5rem;
   color: rgb(168, 168, 168);
   margin: 5px 0;
   display: inline;
@@ -135,11 +136,36 @@ p.text span {
   color: #6feaf6;
 }
 
+.qr-code-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0; /* Adjust the margin as needed */
+}
+
+.qr-code-container img {
+  max-width: 100%;
+  height: auto;
+}
+
+.responsive-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
 
 @media screen and (max-device-width: 600px) and (-webkit-min-device-pixel-ratio:0) {
 
 
-
+  .screen {
+    background-color: #fff;
+    height: 70px;
+    width: 100%;
+    margin: 15px 0;
+    transform: rotateX(-45deg);
+    box-shadow: 0 3px 10px rgba(255, 255, 255, 0.7);
+  }
 
 
 
@@ -164,6 +190,8 @@ p.text span {
 .seat:nth-last-of-type(2) {
   margin-left: 18px;
 }
+
+
 
 
 

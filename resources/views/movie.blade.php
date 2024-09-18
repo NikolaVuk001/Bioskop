@@ -70,7 +70,7 @@
                 </div>
                 
             </div>
-            <a href="#" class="btn btn-danger btn-lg float-end">Kupi Karte</a>
+            <a href="{{url('/Repertoar/Film/' . $film->id)}}" class="btn btn-danger btn-lg float-end">Kupi Karte</a>
 
 
 

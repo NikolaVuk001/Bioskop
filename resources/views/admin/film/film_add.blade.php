@@ -121,7 +121,7 @@
                               
                                                                
                                 <div class="mb-3 d-flex align-items-end justify-content-end">                                  
-                                    <input type="submit" class="btn btn-primary btn-lg px-4" value="Dodaj Film"/>                                                              
+                                    <input type="submit" onclick="this.disabled=true; this.form.submit();" class="btn btn-primary btn-lg px-4" value="Dodaj Film"/>                                                              
                                 </div>
 
 

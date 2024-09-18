@@ -106,7 +106,7 @@
                                     </div>
 
                                     <div class="mb-3 d-flex align-items-end justify-content-end">
-                                        <input type="submit" class="btn btn-primary btn-lg px-4" value="Izmeni Film" />
+                                        <input type="submit" onclick="this.disabled=true; this.form.submit();" class="btn btn-primary btn-lg px-4" value="Izmeni Film" />
                                     </div>
 
 
@@ -148,7 +148,7 @@
                       <label for="formFile" class="form-label">Poster Filma</label>
                       <input name="poster" class="form-control" type="file" id="formFile">
                   </div>
-                  <input type="submit" class="btn btn-primary btn-md px-4" value="Izmeni Poster Filma" />
+                  <input type="submit" onclick="this.disabled=true; this.form.submit();" class="btn btn-primary btn-md px-4" value="Izmeni Poster Filma" />
               </div>
               </form>                
             </div>
@@ -162,7 +162,7 @@
                       <label for="formFile" class="form-label">Slide Poster Filma</label>
                       <input name="slide_poster" class="form-control" type="file" id="formFile">
                   </div>
-                  <input type="submit" class="btn btn-primary btn-md px-4" value="Izmeni Slide Poster Filma" />
+                  <input type="submit" onclick="this.disabled=true; this.form.submit();" class="btn btn-primary btn-md px-4" value="Izmeni Slide Poster Filma" />
               </div>
               </form>                
             </div>
@@ -187,7 +187,7 @@
                         <td><img src="{{asset($img->naziv_slike)}}" style="width: 200px; height: 120px" alt=""></td>
                         <td><input type="file" class="form-group" name="slike_filma[{{$img->id}}]"></td>
                         <td>
-                          <input type="submit" class="btn btn-primary" value="Izmeni" />                          
+                          <input type="submit" onclick="this.disabled=true; this.form.submit();" class="btn btn-primary" value="Izmeni" />                          
                         </td>
                       </tr>	
                         

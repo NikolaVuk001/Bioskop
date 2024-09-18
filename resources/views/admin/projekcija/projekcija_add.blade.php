@@ -39,46 +39,53 @@
                                     <div class="row mb-3">
                                         <label class="col-sm-2 col-form-label">Film</label>
                                         <div class="col-sm-10">
-                                            <select class="form-select" name="film" aria-label="Default select example" onchange="mainPosterUrl(event)">
-                                                <option disabled selected="" value="">Izaberite Film</option>
+                                            <select class="form-select" name="film" aria-label="Default select example" onchange="mainPosterUrl(event)" required>
+                                                <option disabled selected value="">Izaberite Film</option>
                                                 @foreach ($films as $film)
-                                                    <option value="{{ $film->id }}">{{ $film->naziv_filma }}</option>
+                                                    <option value="{{ $film->id }}" {{ old('film') == $film->id ? 'selected' : '' }}>
+                                                        {{ $film->naziv_filma }}
+                                                    </option>
                                                 @endforeach
                                             </select>
+                                            <x-input-error :messages="$errors->get('film')" class="mt-2" style="color: red;" />
                                         </div>
                                     </div>
-
-                                    <div class="row mb-3">
-                                      <label for="example-datetime-local-input" class="col-sm-2 col-form-label">Datum i Vreme Projekcije</label>
-                                      <div class="col-sm-10">
-                                          <input name="datum_i_vreme" class="form-control" type="datetime-local" value="" id="example-datetime-local-input">
-                                      </div>
-                                  </div>
                                     
-                                  <div class="row mb-3">
-                                    <label class="col-sm-2 col-form-label">Sala</label>
-                                    <div class="col-sm-10">
-                                        <select class="form-select" name="sala" id="sala" aria-label="Default select example">
-                                            <option disabled selected value="">Izaberite Salu</option>
-                                            @foreach ($salas as $sala)
-                                              <option name="sala" id="sala" value="{{$sala->id}}">Sala {{$sala->id}}</option>
-                                            @endforeach                               
-                                        </select>
+                                    <div class="row mb-3">
+                                        <label for="example-datetime-local-input" class="col-sm-2 col-form-label">Datum i Vreme Projekcije</label>
+                                        <div class="col-sm-10">
+                                            <input name="datum_i_vreme" class="form-control" type="datetime-local" value="{{ old('datum_i_vreme') }}" id="example-datetime-local-input" required>
+                                            <x-input-error :messages="$errors->get('datum_i_vreme')" class="mt-2" style="color: red;" />
+                                        </div>
                                     </div>
-                                </div>
-
+                                    
+                                    <div class="row mb-3">
+                                        <label class="col-sm-2 col-form-label">Sala</label>
+                                        <div class="col-sm-10">
+                                            <select class="form-select" name="sala" id="sala" aria-label="Default select example" required>
+                                                <option disabled selected value="">Izaberite Salu</option>
+                                                @foreach ($salas as $sala)
+                                                    <option value="{{ $sala->id }}" {{ old('sala') == $sala->id ? 'selected' : '' }}>
+                                                        Sala {{ $sala->id }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                            <x-input-error :messages="$errors->get('sala')" class="mt-2" style="color: red;" />
+                                        </div>
+                                    </div>
+                                    
                                     <div class="mb-3 row">
                                         <label for="cena_karte" class="col-sm-2 col-form-label">Cena Karte</label>
                                         <div class="col-sm-10">
-                                          <input type="text" name="cena_karte" id="cena_karte"  class="form-control">
+                                            <input type="text" name="cena_karte" id="cena_karte" class="form-control" value="{{ old('cena_karte') }}" required>
+                                            <x-input-error :messages="$errors->get('cena_karte')" class="mt-2" style="color: red;" />
                                         </div>
-                                    </div>                                    
+                                    </div>
                                     
                                     <div class="mb-3 d-flex align-items-end justify-content-end">
-                                        <input type="submit" class="btn btn-primary btn-lg px-4" value="Dodaj Projekciju" />
+                                        <input type="submit" onclick="this.disabled=true; this.form.submit();" class="btn btn-primary btn-lg px-4" value="Dodaj Projekciju" />
                                     </div>
-
-
+                                    
                                 </div>
                             </div>
 

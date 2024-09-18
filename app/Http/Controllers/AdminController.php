@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Karta;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -12,7 +13,15 @@ class AdminController extends Controller
 
 
     public function AdminDashboard(){
-        return view("admin.index");
+
+        \Stripe\Stripe::setApiKey('sk_test_51OiwBoKVJdMdHQXZSBy0ewEaQ3JHOzml1QGRkvUkL6NxAKBI9Pf0aPZg7QvN5dvACnRCYWH6cI2P9vTE7qCw35MG00vi41GGsm');
+        
+        $transakcije_danas_json = \Stripe\Charge::all();
+
+        
+        
+
+        return view("admin.index", compact("transakcije_danas_json"));
     }
 
 
@@ -54,6 +63,18 @@ class AdminController extends Controller
         //Uzimamo Trenutnog Logovanog Admina/Usera
         $id = Auth::user()->id;
         $data = User::find($id);
+        $email = $request->email;
+
+        $emailExists = User::where('email', $email)->where('id', '!=', $id)->exists();
+
+        if ($emailExists) {
+            $notification = array(
+                'message' => 'Email adresa je već zauzeta od strane drugog korisnika',
+                'alert-type' => 'error'
+            );
+
+            return redirect()->back()->with($notification);
+        }
         //Uzimamo Podatke Sa Forme I ubacujemo u bazu
         $data->name = $request->name;
         $data->surname = $request->surname;

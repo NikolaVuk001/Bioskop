@@ -29,7 +29,7 @@ class RacunMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Racun Mail',
+            subject: 'Racun',
         );
     }
 
@@ -37,15 +37,15 @@ class RacunMail extends Mailable
      * Get the message content definition.
      */
 
-     public function build(){
-        $racun = $this->data;
-        return $this->from('support@bioskop.rs')->view('mail.racun_mail',compact('racun'))->subject('Ulaznice Za  Bioskopa!');
-     }
     public function content(): Content
     {
         
         return new Content(
-            view: 'view.name',
+            view: 'emails.racun_email',
+            with: [
+                'data' => $this->data,
+            ]
+
         );
     }
 

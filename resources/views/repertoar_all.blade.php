@@ -72,7 +72,11 @@
             <p class="card-text">Zanr: {{$film->zanr}}</p>
 
             @php
-              $projekcije_filma = App\Models\Projekcija::where('film_id', $film->id)->whereDate('datum_i_vreme', Carbon\Carbon::parse($datum_p))->get();              
+              $projekcije_filma = App\Models\Projekcija::where('film_id', $film->id)
+              ->whereDate('datum_i_vreme', '=', Carbon\Carbon::today())
+              ->where('datum_i_vreme', '>' ,Carbon\Carbon::now()->toDateTime())            
+              ->orderBy('datum_i_vreme', 'asc')
+              ->get();        
             @endphp
             <div class="row">
             @foreach ($projekcije_filma as $projekcija)
@@ -111,9 +115,10 @@
           var storedValue = localStorage.getItem('#zanr');
           var $zanr = ($(this).find(':selected').val()).toString();
           var $datum = $('#datumi').find(':selected').val();
-          var url = '/Repertoar/' + $datum + '/Zanr/' + $zanr;
-          if (url != "") {                        
-            //$("#output").text(url);
+          var baseUrl = '{{ url('/Repertoar') }}';
+          var url = baseUrl + '/' + $datum + '/Zanr/' + $zanr;
+          if (url != "") {                                              
+            console.log(url);
             window.location.href = url;
           }
         }).val(storedValue);
@@ -126,9 +131,10 @@
       $("#datumi").change(function() {
       var $datum = $(this).find(':selected').val();
       var $zanr = $('#zanr').find(':selected').val();
-      var url = '/Repertoar/' + $datum + '/Zanr/' + $zanr;
-      if (url != "") {                        
-        // $("#output").text(url);
+      var baseUrl = '{{ url('/Repertoar') }}';
+      var url = baseUrl + '/' + $datum + '/Zanr/' + $zanr;
+      if (url != "") {                  
+        console.log(url);
         window.location.href = url;
       }
     });

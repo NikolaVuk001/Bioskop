@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
+        <meta name="theme-color" content="#000000">
         
         <title>Bioskop</title>
 
@@ -19,7 +20,7 @@
 
         {{-- Personal CSS --}}
         <link rel="stylesheet" href="{{asset('css/app-sW5s0cay.css')}}">
-        <link rel="stylesheet" href="{{asset('css/app.css')}}">
+        <link rel="stylesheet" href="{{asset('css/app.css?r=12565')}}">
         {{-- Bootstrap CSS --}}
         <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">        
         {{-- Owl Carousel CSS --}}
@@ -74,9 +75,9 @@
 
         
         
-
         
-       
+        
+        <script src="{{asset('js/form-multiple-click-prevent.js')}}"></script>       
         <script src="{{asset('js/jquery-3.5.1.min.js')}}"></script>        
         <script src="{{asset('js/modalVideoClosing.js')}}"></script>
        
@@ -88,10 +89,9 @@
     </head>
     <body class="d-flex flex-column min-vh-100">
         
-        @include('inc.navbar')
-            <!-- Page Content -->
+        @include('inc.navbar')            
             <main>                                            
-                
+            
                 @yield('content')                                                
             </main>
         @include('inc.footer')

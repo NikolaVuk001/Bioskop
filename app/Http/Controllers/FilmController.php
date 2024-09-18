@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Multi_Slike;
 use App\Models\Film;
 use Carbon\Carbon;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class FilmController extends Controller
 {
@@ -13,6 +14,24 @@ class FilmController extends Controller
     public function AllFilms()
     {
         $films = Film::latest()->get();
+        return view('admin.film.film_all', compact('films'));
+    }
+
+    public function AktuelniFilmovi()
+    {
+        $films = Film::where('trenutno_aktivan',1)->get();
+        return view('admin.film.film_all', compact('films'));
+    }
+
+    public function UskoroFilmovi()
+    {
+        $films = Film::whereDate('pocetak_prikazivanja_date', '>', Carbon::today())->get();
+        return view('admin.film.film_all', compact('films'));
+    }
+
+    public function NeaktivniFilmovi()
+    {
+        $films = Film::where('trenutno_aktivan',0)->get();
         return view('admin.film.film_all', compact('films'));
     }
 
@@ -89,6 +108,9 @@ class FilmController extends Controller
     public function UpdateFilm(Request $request)
     {
         $film_id = $request->id;
+        $datum_date = Carbon::createFromFormat('d.m.Y', $request->pocetak_prikazivanja);
+        $pocetak_prikazivanja_date = $datum_date->format('Y-m-d');
+        
         Film::findOrFail($request->id)->update([
             'naziv_filma' => $request->naziv_filma,
             'duzina_filma' => $request->duzina_filma,
@@ -96,7 +118,8 @@ class FilmController extends Controller
             'opis' => $request->opis,
             'opis_kratak' => $request->opis_kratak,
             'trailer_url' => $request->trailer_url,
-            'pocetak_prikazivanja' => $request->pocetak_prikazivanja,
+            'pocetak_prikazivanja' => $request->pocetak_prikazivanja,         
+            'pocetak_prikazivanja_date' => $pocetak_prikazivanja_date,
             'glumci' => $request->glumci,
             'reziser' => $request->reziser,
             'distributer' => $request->distributer,            
@@ -237,7 +260,7 @@ class FilmController extends Controller
         return redirect()->back()->with($notification);
     }
 
-
+    
     public function DeleteFilm($id){
         $film = Film::findOrFail($id);
         unlink($film->poster);
@@ -251,7 +274,7 @@ class FilmController extends Controller
         }
 
         $notification = array(
-            'message' => 'Film Je Obrisan Uspesno',
+            'message' => 'Film Je Obrisan Uspešno',
             'alert-type' => 'success'
         );
         return redirect()->back()->with($notification);

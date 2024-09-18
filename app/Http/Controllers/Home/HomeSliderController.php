@@ -21,8 +21,6 @@ class HomeSliderController extends Controller
 
     public function UpdateSlide(Request $request)
     {
-
-        
         HomeSlide::findOrFail(1)->update([
             'film_id' => $request->slide1,
             'nazivFilma'=> Film::where('id', $request->slide1)->first()->naziv_filma,

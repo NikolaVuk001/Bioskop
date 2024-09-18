@@ -24,9 +24,7 @@ class HomeCardController extends Controller
 
 
     public function UpdateCards(Request $request)
-    {
-
-        
+    {   
         HomeCards::findOrFail(1)->update([
             'film_id' => $request->card1,
             'naziv_filma'=> Film::where('id', $request->card1)->first()->naziv_filma,

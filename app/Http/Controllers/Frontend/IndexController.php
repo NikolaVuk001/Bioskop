@@ -36,7 +36,7 @@ class IndexController extends Controller
     }
     //
 
-    public function SviFilmoviUPonudi()
+    public function sviFilmoviUPonudi()
     {
         $films = Film::where("trenutno_aktivan", 1)->get();
         $uskoro = 0;
@@ -61,34 +61,49 @@ class IndexController extends Controller
 
     public function RepertoarDanas()
     {
-
-
         $datum_p = Carbon::today()->toDateString();
         $films = DB::table('films')
             ->Join('projekcijas', function (JoinClause $join) {
                 $join->on('films.id', '=', 'projekcijas.film_id')
-                    ->whereDate('projekcijas.datum_i_vreme', Carbon::today());
+                    ->whereDate('projekcijas.datum_i_vreme','=', Carbon::today())
+                    ->where('projekcijas.datum_i_vreme', '>' ,Carbon::now()->toDateTime());
             })
             ->select('films.*')->distinct()
             ->get();
 
-        $projekcije = Projekcija::whereDate('datum_i_vreme', Carbon::today())->get();
+        // $projekcije = Projekcija::whereTime('datum_i_vreme', '<' ,Carbon::now()->toDateTime())
+        // ->get();        
+        
 
 
-        return view('repertoar_all', compact('projekcije', 'films', 'datum_p'));
-
-
+        return view('repertoar_all', compact('films', 'datum_p'));
     }
 
     public function RepertoarZanr(Request $request, $datum, $zanr)
     {
-
         if ($zanr != 'all') {
             $datum_p = $datum;
             $zanr_p = $zanr;
             session()->put('datum', $datum);
-
-            $films = DB::table('films')
+            
+            $carbon_datum = Carbon::parse($datum);
+            if($carbon_datum == Carbon::today()){                     
+                $films = DB::table('films')
+                ->join('projekcijas', function (JoinClause $join) use ($datum) {
+                    $join->on('films.id', '=', 'projekcijas.film_id')
+                    ->whereDate('projekcijas.datum_i_vreme','=', Carbon::today())
+                    ->where('projekcijas.datum_i_vreme', '>' ,Carbon::now()->toDateTime());
+                })
+                ->select('films.*')->distinct()
+                ->where("zanr", 'LIKE', '%' . $zanr . '%')
+                ->get();           
+                $projekcije = Projekcija::where('datum_i_vreme', '>' ,Carbon::now())
+                ->get();
+                
+            } 
+            else {
+                
+                $films = DB::table('films')
                 ->join('projekcijas', function (JoinClause $join) use ($datum) {
                     $join->on('films.id', '=', 'projekcijas.film_id')
                         ->whereDate('projekcijas.datum_i_vreme', Carbon::parse($datum));
@@ -96,9 +111,10 @@ class IndexController extends Controller
                 ->select('films.*')->distinct()
                 ->where("zanr", 'LIKE', '%' . $zanr . '%')
                 ->get();
-
-
-            $projekcije = Projekcija::whereDate('datum_i_vreme', Carbon::parse($datum))->get();
+                $projekcije = Projekcija::whereDate('datum_i_vreme', Carbon::parse($datum))->get();
+            }
+            
+            
 
 
             return view('repertoar_datum', compact('projekcije', 'films', 'datum_p', 'zanr_p'));
@@ -106,18 +122,36 @@ class IndexController extends Controller
         } else {
 
             $datum_p = $datum;
-            $films = DB::table('films')
+
+            $carbon_datum = Carbon::parse($datum);
+            if($carbon_datum == Carbon::today()){
+                $films = DB::table('films')
+                ->join('projekcijas', function (JoinClause $join) use ($datum) {
+                    $join->on('projekcijas.film_id', '=', 'films.id')
+                    ->whereDate('projekcijas.datum_i_vreme','=', Carbon::today())
+                    ->where('projekcijas.datum_i_vreme', '>' ,Carbon::now()->toDateTime());
+                })
+                ->select('films.*')->distinct()
+                ->get();
+                $projekcije = Projekcija::where('datum_i_vreme', '>' ,Carbon::now())
+                ->get();       
+                                  
+            }
+            else {
+                $films = DB::table('films')
                 ->join('projekcijas', function (JoinClause $join) use ($datum) {
                     $join->on('projekcijas.film_id', '=', 'films.id')
                         ->whereDate('projekcijas.datum_i_vreme', Carbon::parse($datum));
                 })
                 ->select('films.*')->distinct()
                 ->get();
+                $projekcije = Projekcija::whereDate('datum_i_vreme', Carbon::parse($datum))->get();
+                
+            }
+            
+            $zanr_p = 'all';
 
-            $projekcije = Projekcija::whereDate('datum_i_vreme', Carbon::parse($datum))->get();
-
-
-            return view('repertoar_all', compact('projekcije', 'films', 'datum_p'));
+            return view('repertoar_datum', compact('projekcije', 'films', 'datum_p', 'zanr_p'));
         }
     }
 
@@ -125,33 +159,47 @@ class IndexController extends Controller
     public function RepertoarFilm($id)
     {
         $datum_p = Carbon::today()->toDateString();
-        $films = DB::table('films')
-            ->Join('projekcijas', function (JoinClause $join) {
-                $join->on('films.id', '=', 'projekcijas.film_id')
-                    ->whereDate('projekcijas.datum_i_vreme', Carbon::today());
-            })
-            ->select('films.*')->distinct()
-            ->where('films.id', $id)
-            ->get();
+        $film = DB::table('films')->find($id);
 
-        $projekcije = Projekcija::whereDate('datum_i_vreme', Carbon::today())->get();
+        $projekcije = Projekcija::where('film_id', $film->id)
+              ->whereDate('datum_i_vreme', '=', Carbon::today())
+              ->where('datum_i_vreme', '>' ,Carbon::now()->toDateTime())            
+              ->orderBy('datum_i_vreme', 'asc')
+              ->get();
 
-        return view('repertoar_film', compact('projekcije', 'films', 'datum_p', 'id'));
+        return view('repertoar_film', compact('projekcije', 'film', 'datum_p', 'id'));
 
     }
 
-    public function RepertoarFilmDatum($id, $datum){
+ 
+    public function RepertoarFilmDatum($id, $datum)
+    {
         $datum_p = $datum;
-        $films = DB::table('films')
-            ->select('films.*')->distinct()
-            ->where('films.id', $id)
-            ->get();
+        $datumTime = Carbon::parse($datum);
 
-        $projekcije = Projekcija::whereDate('datum_i_vreme', Carbon::parse($datum))->get();
+        if ($datumTime->isToday()) {
+            $this->RepertoarFilm($id);
+        }
 
+        $film = DB::table('films')->find($id);
+            
 
-        return view('repertoar_film', compact('projekcije', 'films', 'datum_p', 'id'));
+        if ($datumTime->isToday()) {
+            $projekcije = Projekcija::where('film_id', $film->id)
+              ->whereDate('datum_i_vreme', '=', Carbon::today())
+              ->where('datum_i_vreme', '>' ,Carbon::now()->toDateTime())            
+              ->orderBy('datum_i_vreme', 'asc')
+              ->get();  
+        } else {
+            $projekcije = Projekcija::where('film_id', $film->id)
+              ->whereDate('datum_i_vreme', '=', $datum)                     
+              ->orderBy('datum_i_vreme', 'asc')
+              ->get();  
+        }
+
+        return view('repertoar_film', compact('projekcije', 'film', 'datum_p', 'id'));
     }
+
 
 
     public function ProjekcijaOdabirMesta($id){
@@ -165,21 +213,30 @@ class IndexController extends Controller
             ->where('kartas.projekcija_id',$id)
             ->get()
             ->toArray();
+        $rezervacije = DB::table('rezervacijas')
+        ->select('rezervacijas.sediste as sediste')
+        ->where('rezervacijas.projekcija_id',$id)->where('rezervacijas.aktivna',1)
+        ->get()
+        ->toArray();
+
+        $karte_rezervacije = array_merge($karte, $rezervacije);
+        
+
         $sedista = Sediste::latest()->get();
 
-        $niz_karata = [];
-        for($i = 0; $i < count($karte); $i++){
-            $niz_karata[$i] = $karte[$i]->sediste;
+        $niz_zauzetih_mesta = [];
+        for($i = 0; $i < count($karte_rezervacije); $i++){
+            $niz_zauzetih_mesta[$i] = $karte_rezervacije[$i]->sediste;
         }
-        // dd($niz_karata);
 
-            
-            
-                
-        return view('odabir_mesta',compact('projekcija','sedista','niz_karata'));
-
-            
-            
-        
+        $rezervacije = Carbon::now()->diffInMinutes($projekcija->datum_i_vreme,false) >= 20;
+     
+        return view('odabir_mesta',compact('projekcija','sedista','niz_zauzetih_mesta','rezervacije'));  
     }
+
+    public function getNovosti() {
+        return view('novosti');
+    }
+
+    
 }

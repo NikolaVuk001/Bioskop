@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 
-    <head>
+    <head>        
         
         <meta charset="utf-8" />
         <title>Dashboard | Upcube - Admin & Dashboard Template</title>
@@ -10,7 +10,7 @@
         <meta content="Themesdesign" name="author" />
 
         <!-- App favicon -->
-        <link rel="shortcut icon" href="{{ asset('backend/assets/images/favicon.ico') }}">
+        <link rel="shortcut icon" href="{{ asset('assets/icons/cinema-svgrepo-com.svg') }}">
 
         <!-- jquery.vectormap css -->
         <link href="{{ asset('backend/assets/libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css') }}" rel="stylesheet" type="text/css" />
@@ -115,7 +115,7 @@
 
         {{-- Toester Skripta Za Notifikacije--}}
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-
+        @include('sweetalert::alert')
         <script>
          @if(Session::has('message'))
          var type = "{{ Session::get('alert-type','info') }}"

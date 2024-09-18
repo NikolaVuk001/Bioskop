@@ -139,6 +139,37 @@ body{
   color: aqua!important;
 }
 
+@media (max-width: 991.98px) { /* Adjust breakpoint as needed */
+  .navbar {
+      position: fixed; /* Fix the navbar to the top */
+      top: 0; /* Ensure it stays at the top of the viewport */
+      left: 0;
+      width: 100%; /* Ensure the navbar takes the full width */
+      z-index: 1030; /* Ensure the navbar is above other content */
+      
+      min-height: 8vh; /* Maintain the minimum height for the navbar */
+  }
+
+  #Logo {
+      position: absolute;
+      top: 1.5vw; /* Adjust vertical position as needed */
+      left: 49.5%; /* Center horizontally */
+      transform: translateX(-50%); /* Center horizontally */
+      z-index: 1; /* Ensure logo is above other elements */
+  }
+  
+  .navbar-collapse {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      width: 100%; /* Ensure full width for collapse */
+      margin-top: 5vw; /* Add space below the logo */
+  }
+  
+  
+}
+
 
 
 
@@ -194,7 +225,16 @@ body{
 .carousel-item img{
   
   /* border:10px ridge rgba(51, 255, 255, 0.1); */
-  opacity: 0.9;
+  opacity: 0.9;  
+  display: flex;
+  width: 100vw !important;
+  height: 60vh;
+}
+
+.img-carousel {  
+    width:  100% !important;
+    height: 100px;
+    background-size: cover;
 }
 
 
@@ -265,6 +305,10 @@ body{
 
 
 
+/* ================ Aktuelnosi Home Page =================== */
+
+
+
 
 
 
@@ -280,13 +324,26 @@ body{
 
 
 
+/* ================ Novosti Strana =================== */
+
+
+.lead {
+  font-family: 'Anton', sans-serif;
+  font-size: 3vh;
+  color: rgb(255, 255, 255);
+}
+
 
 
 
 
 /* ================ All Films Strana =================== */
 
-
+.heading-txt {
+  font-family: 'Anton', sans-serif;
+  font-size: 2.5vh;
+  color: rgb(198, 193, 193);
+}
 
 .card{
   border: none!important;
@@ -301,7 +358,7 @@ body{
 }
 
 .card p{
-  font-size: 1.4vh;
+  font-size: 1rem;
 }
 .card .btn{
   font-size: 1rem;
@@ -317,8 +374,7 @@ body{
 }
 
 .card img{
-  transition: 0.5s;
-  width: 12vw; height: 30vh;
+  transition: 0.5s;  
 }
 
 .card img:hover{
@@ -441,7 +497,7 @@ body{
 
 .card_box img{
   width: 100%;
-  height: 17vw;
+  height: 75%;
   opacity: 0.5;
   transition: 0.5s;
 }
@@ -839,17 +895,7 @@ button.projekcija-btn:hover{
   height: 30vh!important;
 }
 
-#NedeljaSlika{
-  content: url("../assets/slider/NedeljaPoster.jpg");
-}
 
-#FerrariSlika{
-  content: url("../assets/slider/FerrariPoster.jpg");
-}
-
-#PcelarSlika{
-  content: url("../assets/slider/PcelarPoster.jpg");
-}
 
 
 
